@@ -12,6 +12,18 @@ class PersonApiView(APIView):
 
     def get(self, request, pk):
         person = self.get_object(pk)
-        print(person)
         serializer = PersonSerializer(person, context={'request': request})
         return Response(serializer.data)
+
+    def post(self, request):
+        serializer = PersonSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED,
+            )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST,
+        )

@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404
+from rest_framework.generics import ListCreateAPIView
 from rest_framework.views import APIView, Response
+from rest_framework import status
 
 from persons.models import Person
 from persons.serializers import PersonSerializer
@@ -15,7 +17,7 @@ class PersonApiView(APIView):
         serializer = PersonSerializer(person, context={'request': request})
         return Response(serializer.data)
 
-    def post(self, request):
+    def post(self, request, pk):
         serializer = PersonSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -27,3 +29,16 @@ class PersonApiView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST,
         )
+
+    def delete(self, request, pk):
+        movie = self.get_object(pk)
+        movie.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PersonsListApiView(ListCreateAPIView):
+    serializer_class = PersonSerializer
+
+    def get_queryset(self):
+        return Person.objects.all()
+

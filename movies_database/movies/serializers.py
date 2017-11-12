@@ -4,7 +4,10 @@ from persons.serializers import PersonSerializer
 
 
 class MovieSerializer(serializers.HyperlinkedModelSerializer):
-    actors = PersonSerializer(many=True)
+    actors = PersonSerializer(
+        many=True,
+        read_only=True,
+    )
 
     class Meta:
         model = Movie

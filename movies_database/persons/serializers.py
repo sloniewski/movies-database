@@ -1,8 +1,12 @@
 from rest_framework import serializers
+
 from persons.models import Person
 
+from movies.serializers import MovieListSerializer
 
-class PersonGeneralSerializer(serializers.HyperlinkedModelSerializer):
+
+class PersonListSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = Person
         fields = (
@@ -13,10 +17,16 @@ class PersonGeneralSerializer(serializers.HyperlinkedModelSerializer):
 
 class PersonDetailSerializer(serializers.HyperlinkedModelSerializer):
 
+    movie_set = MovieListSerializer(
+        many=True,
+        read_only=True,
+    )
+
     class Meta:
         model = Person
         fields = (
             'first_name',
             'second_name',
             'year_of_birth',
+            'movie_set',
         )

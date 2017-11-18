@@ -1,21 +1,60 @@
+from django.shortcuts import reverse
 from django.db import models
 
 from persons.models import Person
 
 
-class Role(models.Model):
+class Genre(models.Model):
+    name = models.CharField(
+        max_length=32,
+        unique=True,
+    )
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+    @property
+    def movies_list_url(self):
+        return reverse('genre-movie-list', kwargs={'pk': self.pk})
+
+
+class Cast(models.Model):
     movie = models.ForeignKey(
-        Person,
+        'Movie',
+        on_delete=models.DO_NOTHING,
+        related_name='cast_movie',
     )
     person = models.ForeignKey(
-        'Movie',
+        Person,
+        on_delete=models.DO_NOTHING,
+        related_name='cast_person',
     )
-    role = models.CharField(
+    character = models.CharField(
         max_length=32,
-        choices=[
-            ('actor', 'actor'),
-            ('director', 'director'),
-        ]
+    )
+
+    def __str__(self):
+        return '{} - {}'.format(self.movie, self.person)
+
+
+class Crew(models.Model):
+    movie = models.ForeignKey(
+        'Movie',
+        on_delete=models.DO_NOTHING,
+        related_name='crew_movie',
+    )
+    person = models.ForeignKey(
+        Person,
+        on_delete=models.DO_NOTHING,
+        related_name='crew_person',
+    )
+    department = models.CharField(
+        max_length=32,
+    )
+    credit = models.CharField(
+        max_length=32,
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
@@ -27,16 +66,38 @@ class Movie(models.Model):
         max_length=64,
     )
     description = models.TextField()
-    actors = models.ManyToManyField(
+
+    cast = models.ManyToManyField(
         Person,
-        through=Role,
-        limit_choices_to={'role': 'actor'},
+        through=Cast,
+        related_name='movie_cast',
+    )
+    crew = models.ManyToManyField(
+        Person,
+        through=Crew,
+        related_name='movie_crew',
     )
     year = models.IntegerField()
-    genre = models.CharField(
-        max_length=64,
+    genre = models.ManyToManyField(
+        Genre,
     )
+    rating = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+
+    @property
+    def director(self):
+        return self.movie_crew.filter(credit='director')
+
+    @property
+    def details_url(self):
+        return self.get_absolute_url()
+
+    def get_absolute_url(self):
+        return reverse('movie-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return '{} {}'.format(self.title, self.year)
+
 

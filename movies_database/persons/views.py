@@ -7,7 +7,7 @@ from rest_framework.views import APIView, Response
 from rest_framework import status
 
 from persons.models import Person
-from persons.serializers import PersonDetailSerializer, PersonGeneralSerializer
+from persons.serializers import PersonDetailSerializer, PersonListSerializer
 
 
 class DefaultPaginator(PageNumberPagination):
@@ -48,7 +48,7 @@ class PersonApiView(APIView):
 
 
 class PersonsListApiView(ListAPIView):
-    serializer_class = PersonGeneralSerializer
+    serializer_class = PersonListSerializer
     pagination_class = DefaultPaginator
 
     def get_queryset(self):

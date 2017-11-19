@@ -45,12 +45,13 @@ Persons API
 JSON Representation of movie object in list GET: /api-movies/movies
 ```
     {
+        "id": 1,
         "title": "Inception",
         "year": 2010,
         "director": [
             "Christopher Nolan"
         ],
-        "details_url": "/api-movies/movie/1/"
+        "url": "/api-movies/movie/1/"
     }
 ```
 
@@ -132,8 +133,21 @@ JSON representation
 JSON representation of person object in GET
 ```
 {
-    "first_name": "Leonardo",
-    "second_name": "DiCaprio ",
-    "year_of_birth": 1974
+    "id": 3,
+    "first_name": "Christopher",
+    "second_name": "Nolan",
+    "year_of_birth": 1970,
+    "movie_cast": [],
+    "movie_crew": [
+        {
+            "id": 1,
+            "title": "Inception",
+            "year": 2010,
+            "director": [
+                "Christopher Nolan"
+            ],
+            "url": "/api-movies/movie/1/"
+        }
+    ]
 }
 ```

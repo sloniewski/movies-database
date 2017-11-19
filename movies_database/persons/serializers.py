@@ -5,19 +5,26 @@ from persons.models import Person
 from movies.serializers import MovieListSerializer
 
 
+
 class PersonListSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Person
         fields = (
+            'id',
             'fullname',
-            'details_url',
+            'url',
         )
 
 
 class PersonDetailSerializer(serializers.HyperlinkedModelSerializer):
 
-    movie_set = MovieListSerializer(
+    movie_cast = MovieListSerializer(
+        many=True,
+        read_only=True,
+    )
+
+    movie_crew = MovieListSerializer(
         many=True,
         read_only=True,
     )
@@ -25,8 +32,10 @@ class PersonDetailSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Person
         fields = (
+            'id',
             'first_name',
             'second_name',
             'year_of_birth',
-            'movie_set',
+            'movie_cast',
+            'movie_crew',
         )

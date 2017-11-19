@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from movies.models import Movie, Genre, Cast
+from movies.models import Movie, Genre, Cast, Crew
 
 from persons.models import Person
 
@@ -19,8 +19,9 @@ class PersonListSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Person
         fields = (
+            'id',
             'fullname',
-            'details_url',
+            'url',
         )
 
 
@@ -37,6 +38,19 @@ class CastListSerializer(serializers.ModelSerializer):
         )
 
 
+class CrewListSerializer(serializers.ModelSerializer):
+    person = PersonListSerializer(
+        read_only=True,
+    )
+
+    class Meta:
+        model = Crew
+        fields = (
+            'person',
+            'credit',
+        )
+
+
 class MovieDetailSerializer(serializers.ModelSerializer):
 
     genre = GenreListSerializer(
@@ -49,15 +63,22 @@ class MovieDetailSerializer(serializers.ModelSerializer):
         read_only=True,
     )
 
+    crew_movie = CrewListSerializer(
+        many=True,
+        read_only=True,
+    )
+
     class Meta:
         model = Movie
         fields = (
+            'id',
             'title',
             'year',
             'director',
             'description',
             'cast_movie',
             'genre',
+            'crew_movie',
         )
 
 
@@ -66,7 +87,9 @@ class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = (
+            'id',
             'title',
             'year',
-            'details_url',
+            'director',
+            'url',
         )

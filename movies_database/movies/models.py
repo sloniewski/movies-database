@@ -50,6 +50,8 @@ class Crew(models.Model):
     )
     department = models.CharField(
         max_length=32,
+        blank=True,
+        null=True,
     )
     credit = models.CharField(
         max_length=32,
@@ -88,10 +90,14 @@ class Movie(models.Model):
 
     @property
     def director(self):
-        return self.movie_crew.filter(credit='director')
+        directors_queryset = self.crew.filter(crew_person__credit='director')
+        res = []
+        for director in directors_queryset:
+            res.append(director.fullname)
+        return res
 
     @property
-    def details_url(self):
+    def url(self):
         return self.get_absolute_url()
 
     def get_absolute_url(self):

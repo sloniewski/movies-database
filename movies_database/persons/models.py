@@ -16,7 +16,7 @@ class Person(models.Model):
         return self.__str__()
 
     @property
-    def details_url(self):
+    def url(self):
         return self.get_absolute_url()
 
     def get_absolute_url(self):

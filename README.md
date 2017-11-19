@@ -44,7 +44,7 @@ Persons API
 ### Movies API
 
 JSON Representation of movie object in list GET: /api-movies/movies
-'''
+```
     {
         "title": "Inception",
         "year": 2010,
@@ -53,10 +53,10 @@ JSON Representation of movie object in list GET: /api-movies/movies
         ],
         "details_url": "/api-movies/movie/1/"
     }
-'''
+```
 
 JSON representation of movie object details in GET: /api-movies/movie/{id}
-'''
+```
 {
     "title": "Inception",
     "year": 2010,
@@ -104,14 +104,13 @@ JSON representation of movie object details in GET: /api-movies/movie/{id}
         }
     ]
 }
-
-'''
+```
 
 ### Person API
 
 
 JSON representation
-'''
+```
 
 {
     "count": 19,
@@ -140,13 +139,13 @@ JSON representation
         },
     ]
 }
-'''
+```
 
 JSON representation of person object in GET
-'''
+```
 {
     "first_name": "Leonardo",
     "second_name": "DiCaprio ",
     "year_of_birth": 1974
 }
-'''
+```

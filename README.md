@@ -3,6 +3,7 @@
 Aim is to create backend functions for REST application. Application is a service for movies database. It is build around 2 types of objects
 * movie object - representing a movie
 * person - representing people involved in movie creation/production
+
 Objects are serialized to JSON always
 
 Requirmentes:
@@ -21,9 +22,6 @@ Movies API
 |--------|------------------------|------------------------------------------|
 |GET     | /api-movies/movies     | Get list of all movie objects            |
 |POST    | /api-movies/movies     | Add a movie object to db                 |
-
-|Verb    | Url                    | Action                                   |
-|--------|------------------------|------------------------------------------|
 |GET     | /api-movies/movie/{id} | Get details of a movie with {id}         |
 |DELETE  | /api-movies/movie/{id} | Delete movie with {id}                   |
 |PATCH   | /api-movies/movie/{id} | Update provided fields of movie with {id}|
@@ -35,9 +33,6 @@ Persons API
 |--------|--------------------------|-------------------------------------------|
 |GET     | /api-persons/persons     | Get list of all person objects            |
 |POST    | /api-persons/persons     | Add a person  object to db                |
-
-|Verb    | Url                      | Action                                    |
-|--------|--------------------------|-------------------------------------------|
 |GET     | /api-persons/person/{id} | Get details of a person with {id}         |
 |DELETE  | /api-persons/person/{id} | Delete person object with {id}            |
 |PATCH   | /api-persons/person/{id} | Update provided fields of person with {id}|

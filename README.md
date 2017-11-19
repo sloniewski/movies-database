@@ -21,6 +21,8 @@ Movies API
 |--------|------------------------|------------------------------------------|
 |GET     | /api-movies/movies     | Get list of all movie objects            |
 |POST    | /api-movies/movies     | Add a movie object to db                 |
+
+|Verb    | Url                    | Action                                   |
 |--------|------------------------|------------------------------------------|
 |GET     | /api-movies/movie/{id} | Get details of a movie with {id}         |
 |DELETE  | /api-movies/movie/{id} | Delete movie with {id}                   |
@@ -33,6 +35,8 @@ Persons API
 |--------|--------------------------|-------------------------------------------|
 |GET     | /api-persons/persons     | Get list of all person objects            |
 |POST    | /api-persons/persons     | Add a person  object to db                |
+
+|Verb    | Url                      | Action                                    |
 |--------|--------------------------|-------------------------------------------|
 |GET     | /api-persons/person/{id} | Get details of a person with {id}         |
 |DELETE  | /api-persons/person/{id} | Delete person object with {id}            |
@@ -86,10 +90,6 @@ JSON representation of movie object details in GET: /api-movies/movie/{id}
             "movies_list_url": "/api-movies/movies/genre/1/"
         },
         {
-            "name": "si-fi",
-            "movies_list_url": "/api-movies/movies/genre/2/"
-        },
-        {
             "name": "adventure",
             "movies_list_url": "/api-movies/movies/genre/3/"
         }
@@ -129,14 +129,7 @@ JSON representation
             "fullname": "Russell Crowe",
             "details_url": "/api-persons/person/18/"
         },
-        {
-            "fullname": "Leonardo DiCaprio ",
-            "details_url": "/api-persons/person/7/"
-        },
-        {
-            "fullname": "David Fincher",
-            "details_url": "/api-persons/person/9/"
-        },
+
     ]
 }
 ```

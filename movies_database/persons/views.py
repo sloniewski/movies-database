@@ -3,6 +3,7 @@ from django.db.models import ObjectDoesNotExist
 
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import detail_route
 from rest_framework.views import APIView, Response
 from rest_framework import status
 from rest_framework import viewsets
@@ -95,6 +96,19 @@ class PersonViewSet(viewsets.ViewSet, viewsets.GenericViewSet):
         )
         return Response(serializer.data)
 
+    @detail_route(methods=['get'])
+    def simple(self, request, pk=None):
+        if pk is None:
+            instance = self.model.objects.first()
+        else:
+            try:
+                instance = self.model.objects.get(pk=pk)
+            except ObjectDoesNotExist:
+                instance = self.model.objects.first()
+        serializer = self.serializer_class(
+            instance=instance,
+        )
+        return Response(serializer.data)
 
     def list(self, request):
         serializer = PersonListSerializer(

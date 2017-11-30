@@ -5,6 +5,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView, Response
 from rest_framework import status
+from rest_framework import viewsets
 
 from persons.models import Person
 from persons.serializers import PersonDetailSerializer, PersonListSerializer
@@ -67,3 +68,38 @@ class PersonsListApiView(ListAPIView):
                 serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+
+class PersonViewSet(viewsets.ViewSet, viewsets.GenericViewSet):
+    model = Person
+    serializer_class = PersonListSerializer
+
+    def get_object(self):
+        return self.model.objects.get(
+            pk=self.request.resolver_match.kwargs['pk'],
+        )
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def retrieve(self, request, pk=None):
+        if pk is None:
+            instance = self.model.objects.first()
+        else:
+            try:
+                instance = self.model.objects.get(pk=pk)
+            except ObjectDoesNotExist:
+                instance = self.model.objects.first()
+        serializer = PersonDetailSerializer(
+            instance=instance,
+        )
+        return Response(serializer.data)
+
+
+    def list(self, request):
+        serializer = PersonListSerializer(
+            instance=self.get_queryset(),
+            many=True,
+        )
+        return Response(data=serializer.data)
+

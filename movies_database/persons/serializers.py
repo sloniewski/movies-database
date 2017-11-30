@@ -5,8 +5,7 @@ from persons.models import Person
 from movies.serializers import MovieListSerializer
 
 
-
-class PersonListSerializer(serializers.HyperlinkedModelSerializer):
+class PersonListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person

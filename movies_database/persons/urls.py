@@ -1,6 +1,14 @@
 from django.conf.urls import url
 from persons import views
 
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(
+    r'ppl',
+    views.PersonViewSet,
+    base_name='prsn',
+)
 
 urlpatterns = [
 
@@ -11,3 +19,5 @@ urlpatterns = [
         views.PersonsListApiView.as_view(), name='person-list'),
 
 ]
+
+urlpatterns += router.urls

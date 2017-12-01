@@ -16,7 +16,7 @@ class PersonListSerializer(serializers.ModelSerializer):
         )
 
 
-class PersonDetailSerializer(serializers.HyperlinkedModelSerializer):
+class PersonDetailSerializer(serializers.ModelSerializer):
 
     movie_cast = MovieListSerializer(
         many=True,

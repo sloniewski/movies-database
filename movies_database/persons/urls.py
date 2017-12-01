@@ -5,18 +5,12 @@ from rest_framework import routers
 
 router = routers.SimpleRouter()
 router.register(
-    r'ppl',
+    r'person',
     views.PersonViewSet,
-    base_name='prsn',
+    base_name='person',
 )
 
 urlpatterns = [
-
-    url(r'person/(?P<pk>(\d)+)/$',
-        views.PersonApiView.as_view(), name='person-detail'),
-
-    url(r'persons/$',
-        views.PersonsListApiView.as_view(), name='person-list'),
 
 ]
 

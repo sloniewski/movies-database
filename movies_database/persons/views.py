@@ -4,10 +4,12 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import Response
 from rest_framework import status
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.mixins import ListModelMixin
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from persons.models import Person
 from persons.serializers import PersonDetailSerializer, PersonListSerializer
+
+from users.permissions import IsAdminOrReadOnly
 
 
 class DefaultPaginator(PageNumberPagination):
@@ -21,6 +23,7 @@ class PersonViewSet(GenericViewSet):
     serializer_class = PersonDetailSerializer
     pagination_class = DefaultPaginator
     queryset = Person.objects.all()
+    permission_classes = (IsAuthenticatedOrReadOnly,IsAdminOrReadOnly)
 
     def retrieve(self, request, pk):
         try:

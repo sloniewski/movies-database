@@ -9,16 +9,23 @@ import json
 
 class LoginApiView(APIView):
 
+    def get_login_fail_response(self):
+        return HttpResponse(
+            json.dumps(({'users': 'invalid login or password'})),
+            content_type='application/json',
+        )
+
     def post(self, request):
         try:
             credentials = json.loads(request.body)
         except json.decoder.JSONDecodeError:
-            return HttpResponse(
-                json.dumps(({'users': 'invalid login or password'})),
-                content_type='application/json',
-            )
-        username = credentials['username']
-        password = credentials['password']
+            return self.get_login_fail_response()
+
+        try:
+            username = credentials['username']
+            password = credentials['password']
+        except KeyError:
+            return self.get_login_fail_response()
 
         user = authenticate(username=username, password=password)
         if user is not None:
@@ -29,10 +36,7 @@ class LoginApiView(APIView):
                     content_type='application/json',
                 )
         else:
-            return HttpResponse(
-                json.dumps(({'users': 'invalid login or password'})),
-                content_type = 'application/json',
-            )
+            return self.get_login_fail_response()
 
 
 class WhoAmI(View):

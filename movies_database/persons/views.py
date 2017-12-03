@@ -23,7 +23,7 @@ class PersonViewSet(GenericViewSet):
     serializer_class = PersonDetailSerializer
     pagination_class = DefaultPaginator
     queryset = Person.objects.all()
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
 
     def retrieve(self, request, pk):
         try:
@@ -58,8 +58,6 @@ class PersonViewSet(GenericViewSet):
         )
         serializer = PersonListSerializer(page, many=True)
         return paginator.get_paginated_response(serializer.data)
-
-
 
     def partial_update(self,request, pk):
         try:

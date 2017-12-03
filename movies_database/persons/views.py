@@ -23,7 +23,7 @@ class PersonViewSet(GenericViewSet):
     serializer_class = PersonDetailSerializer
     pagination_class = DefaultPaginator
     queryset = Person.objects.all()
-    permission_classes = (IsAuthenticatedOrReadOnly,IsAdminOrReadOnly)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def retrieve(self, request, pk):
         try:

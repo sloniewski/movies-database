@@ -109,3 +109,4 @@ db.sqlite3
 .idea
 .idea/
 migrations/
+production.py

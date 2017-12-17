@@ -16,6 +16,12 @@ router.register(
     base_name='cast',
 )
 
+router.register(
+    'crew',
+    views.CrewView,
+    base_name='crew',
+)
+
 
 urlpatterns = [
 

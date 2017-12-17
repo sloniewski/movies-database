@@ -72,6 +72,27 @@ class CrewListSerializer(serializers.ModelSerializer):
         )
 
 
+class CrewSerializer(serializers.ModelSerializer):
+    movie_url = serializers.URLField(
+        source='movie.get_absolute_url',
+        read_only=True,
+    )
+    person_url = serializers.URLField(
+        source='person.get_absolute_url',
+        read_only=True,
+    )
+
+    class Meta:
+        model = Crew
+        fields = (
+            'person',
+            'movie',
+            'credit',
+            'movie_url',
+            'person_url',
+        )
+
+
 class MovieDetailSerializer(serializers.ModelSerializer):
 
     genre = GenreListSerializer(

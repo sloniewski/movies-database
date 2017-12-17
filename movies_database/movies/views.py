@@ -6,11 +6,12 @@ from rest_framework.generics import ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import detail_route
 
-from movies.models import Movie, Genre, Cast
+from movies.models import Movie, Genre, Cast, Crew
 from movies.serializers import (
     MovieDetailSerializer,
     MovieListSerializer,
     CastSerializer,
+    CrewSerializer,
 )
 
 
@@ -39,3 +40,9 @@ class CastView(ModelViewSet):
     model = Cast
     serializer_class = CastSerializer
     queryset = Cast.objects.all()
+
+
+class CrewView(ModelViewSet):
+    model = Crew
+    serializer_class = CrewSerializer
+    queryset = Crew.objects.all()

@@ -38,6 +38,27 @@ class CastListSerializer(serializers.ModelSerializer):
         )
 
 
+class CastSerializer(serializers.ModelSerializer):
+    movie_url = serializers.URLField(
+        source='movie.get_absolute_url',
+        read_only=True,
+    )
+    person_url = serializers.URLField(
+        source='person.get_absolute_url',
+        read_only=True,
+    )
+
+    class Meta:
+        model = Cast
+        fields = (
+            'movie',
+            'person',
+            'character',
+            'movie_url',
+            'person_url',
+        )
+
+
 class CrewListSerializer(serializers.ModelSerializer):
     person = PersonListSerializer(
         read_only=True,

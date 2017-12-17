@@ -6,8 +6,12 @@ from rest_framework.generics import ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import detail_route
 
-from movies.models import Movie, Genre
-from movies.serializers import MovieDetailSerializer, MovieListSerializer
+from movies.models import Movie, Genre, Cast
+from movies.serializers import (
+    MovieDetailSerializer,
+    MovieListSerializer,
+    CastSerializer,
+)
 
 
 class MovieView(ModelViewSet):
@@ -29,3 +33,9 @@ class GenreMoviesMoviesApiListView(ListCreateAPIView):
     def get_queryset(self):
         genre = Genre.objects.get(pk=self.request.resolver_match.kwargs['pk'])
         return genre.movie_set.all()
+
+
+class CastView(ModelViewSet):
+    model = Cast
+    serializer_class = CastSerializer
+    queryset = Cast.objects.all()

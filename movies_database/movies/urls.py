@@ -10,6 +10,12 @@ router.register(
     base_name='movie',
 )
 
+router.register(
+    'cast',
+    views.CastView,
+    base_name='cast',
+)
+
 
 urlpatterns = [
 

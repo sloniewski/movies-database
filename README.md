@@ -1,5 +1,6 @@
 # Movies Database
 
+This is a CodersLab workshop app idea tha I picked up and tried to finish.
 Aim is to create backend functions for REST application. Application is a service for movies database. It is build around 2 types of objects
 * movie object - representing a movie
 * person - representing people involved in movie creation/production

@@ -36,6 +36,10 @@ class Cast(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.movie, self.person)
 
+    def get_absolute_url(self):
+        return reverse('cast-detail', kwargs={'pk': self.pk})
+
+
 
 class Crew(models.Model):
     movie = models.ForeignKey(

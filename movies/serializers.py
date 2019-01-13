@@ -47,6 +47,14 @@ class CastSerializer(serializers.ModelSerializer):
         source='person.get_absolute_url',
         read_only=True,
     )
+    person_name = serializers.CharField(
+        source='person.fullname',
+        read_only=True,
+    )
+    self = serializers.URLField(
+        source='get_absolute_url',
+        read_only=True,
+    )
 
     class Meta:
         model = Cast
@@ -56,6 +64,8 @@ class CastSerializer(serializers.ModelSerializer):
             'character',
             'movie_url',
             'person_url',
+            'person_name',
+            'self',
         )
 
 

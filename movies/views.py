@@ -5,7 +5,9 @@ from rest_framework.views import Response
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import detail_route
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
+from users.permissions import IsAdminOrReadOnly
 from movies.models import Movie, Genre, Cast, Crew
 from movies.serializers import (
     MovieDetailSerializer,
@@ -19,6 +21,7 @@ class MovieView(ModelViewSet):
     model = Movie
     serializer_class = MovieListSerializer
     queryset = Movie.objects.all()
+    permission_classes = (IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
 
     @detail_route(methods=['get'])
     def details(self, request, pk):

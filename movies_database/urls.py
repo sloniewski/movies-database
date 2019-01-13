@@ -20,15 +20,13 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
 
-    url(r'^api-persons/',
-        include('persons.urls')),
+    url(r'^api/', include('persons.urls')),
 
-    url(r'^api-movies/',
-        include('movies.urls')),
+    url(r'^api/', include('movies.urls')),
 
-    url(r'^api-auth/', include('rest_framework.urls',
-                               namespace='rest_framework')),
+    url(r'^api/', include('rest_framework.urls',
+                        namespace='rest_framework')),
 
-    url(r'^api-users/', include('users.urls',
+    url(r'^api/', include('users.urls',
                         namespace='users')),
 ]

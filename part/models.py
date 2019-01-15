@@ -14,7 +14,7 @@ class Cast(models.Model):
     person = models.ForeignKey(
         Person,
         on_delete=models.DO_NOTHING,
-        related_name='movies_cast',
+        related_name='cast_member',
     )
     character = models.CharField(
         max_length=32,

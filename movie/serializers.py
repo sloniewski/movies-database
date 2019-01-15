@@ -21,12 +21,12 @@ class MovieDetailSerializer(serializers.ModelSerializer):
         read_only=True,
     )
 
-    cast_movie = CastListSerializer(
+    cast = CastListSerializer(
         many=True,
         read_only=True,
     )
 
-    crew_movie = CrewListSerializer(
+    crew = CrewListSerializer(
         many=True,
         read_only=True,
     )
@@ -39,9 +39,9 @@ class MovieDetailSerializer(serializers.ModelSerializer):
             'year',
             'director',
             'description',
-            'cast_movie',
+            'cast',
             'genre',
-            'crew_movie',
+            'crew',
         )
 
 

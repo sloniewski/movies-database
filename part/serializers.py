@@ -1,20 +1,10 @@
 from rest_framework import serializers
-from movies.models import Movie, Genre, Cast, Crew
 
-from persons.models import Person
-
-
-class GenreListSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Genre
-        fields = (
-            'name',
-            'movies_list_url',
-        )
+from part.models import Crew, Cast
+from person.models import Person
 
 
-class PersonListSerializer(serializers.HyperlinkedModelSerializer):
+class PersonListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
@@ -100,48 +90,4 @@ class CrewSerializer(serializers.ModelSerializer):
             'credit',
             'movie_url',
             'person_url',
-        )
-
-
-class MovieDetailSerializer(serializers.ModelSerializer):
-
-    genre = GenreListSerializer(
-        many=True,
-        read_only=True,
-    )
-
-    cast_movie = CastListSerializer(
-        many=True,
-        read_only=True,
-    )
-
-    crew_movie = CrewListSerializer(
-        many=True,
-        read_only=True,
-    )
-
-    class Meta:
-        model = Movie
-        fields = (
-            'id',
-            'title',
-            'year',
-            'director',
-            'description',
-            'cast_movie',
-            'genre',
-            'crew_movie',
-        )
-
-
-class MovieListSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Movie
-        fields = (
-            'id',
-            'title',
-            'year',
-            'director',
-            'url',
         )

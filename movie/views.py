@@ -8,12 +8,10 @@ from rest_framework.decorators import detail_route
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from users.permissions import IsAdminOrReadOnly
-from movies.models import Movie, Genre, Cast, Crew
-from movies.serializers import (
+from movie.models import Movie, Genre
+from movie.serializers import (
     MovieDetailSerializer,
     MovieListSerializer,
-    CastSerializer,
-    CrewSerializer,
 )
 
 
@@ -37,15 +35,3 @@ class GenreMoviesMoviesApiListView(ListCreateAPIView):
     def get_queryset(self):
         genre = Genre.objects.get(pk=self.request.resolver_match.kwargs['pk'])
         return genre.movie_set.all()
-
-
-class CastView(ModelViewSet):
-    model = Cast
-    serializer_class = CastSerializer
-    queryset = Cast.objects.all()
-
-
-class CrewView(ModelViewSet):
-    model = Crew
-    serializer_class = CrewSerializer
-    queryset = Crew.objects.all()

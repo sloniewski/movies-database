@@ -6,8 +6,8 @@ from rest_framework import status
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from persons.models import Person
-from persons.serializers import PersonDetailSerializer, PersonListSerializer
+from person.models import Person
+from person.serializers import PersonDetailSerializer, PersonListSerializer
 
 from users.permissions import IsAdminOrReadOnly
 

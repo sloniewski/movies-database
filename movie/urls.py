@@ -1,17 +1,17 @@
 from django.conf.urls import url
-from persons import views
+from movie import views
 
 from rest_framework import routers
 
+app_name = 'movie'
+
 router = routers.SimpleRouter()
 router.register(
-    r'person',
-    views.PersonViewSet,
-    base_name='person',
+    'movie',
+    views.MovieView,
+    base_name='movie',
 )
 
-urlpatterns = [
-
-]
+urlpatterns = []
 
 urlpatterns += router.urls

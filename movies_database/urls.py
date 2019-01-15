@@ -20,9 +20,11 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
 
-    url(r'^api/', include('persons.urls')),
+    url(r'^api/', include('person.urls')),
 
-    url(r'^api/', include('movies.urls')),
+    url(r'^api/', include('movie.urls')),
+
+    url(r'^api/', include('part.urls')),
 
     url(r'^api/', include('rest_framework.urls',
                         namespace='rest_framework')),

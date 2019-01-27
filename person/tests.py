@@ -17,7 +17,7 @@ class TestViews(TestCase):
             year_of_birth='1949',
         )
 
-    def test_person_get(self):
+    def test_person_list_get(self):
         url = reverse('person:person-list')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)

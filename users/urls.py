@@ -1,4 +1,5 @@
-from django.conf.urls import url
+from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
 
 from users import views
 
@@ -6,8 +7,10 @@ app_name = 'users'
 
 urlpatterns = [
 
-    url(r'login/$', views.LoginApiView.as_view(), name='session-login'),
+    path('token-auth/', obtain_auth_token, name='token-auth'),
 
-    url(r'whoami/$', views.WhoAmI.as_view(), name='whoami'),
+    path('login/', views.LoginApiView.as_view(), name='session-login'),
+
+    path('whoami/', views.WhoAmI.as_view(), name='whoami'),
 
 ]

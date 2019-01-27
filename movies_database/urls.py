@@ -29,6 +29,5 @@ urlpatterns = [
     url(r'^api/', include('rest_framework.urls',
                         namespace='rest_framework')),
 
-    url(r'^api/', include('users.urls',
-                        namespace='users')),
+    url(r'^api/', include('users.urls')),
 ]

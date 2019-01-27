@@ -49,3 +49,32 @@ class TestMovieViews(TestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, 201)
+
+    def test_post_movie_401(self):
+        url = reverse('movie:movie-list')
+        data = {
+            'title': 'huntin with elmer',
+            'description': 'huntin rabbits',
+            'year': 2003,
+        }
+        self.client.credentials()
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 401)
+
+    def test_post_movie_403(self):
+        user = User.objects.create_user(
+            username='abc',
+            password='xyz',
+            is_staff=False,
+        )
+        token = Token.objects.create(user=user)
+
+        url = reverse('movie:movie-list')
+        data = {
+            'title': 'huntin with elmer',
+            'description': 'huntin rabbits',
+            'year': 2003,
+        }
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 403)

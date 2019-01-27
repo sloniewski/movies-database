@@ -9,12 +9,15 @@ from movie.serializers import (
     MovieListSerializer,
 )
 
+from main.utils import DefaultPaginator
+
 
 class MovieView(ModelViewSet):
     model = Movie
     serializer_class = MovieDetailSerializer
     queryset = Movie.objects.all()
     permission_classes = (IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
+    pagination_class = DefaultPaginator
 
 
 class GenreMoviesMoviesApiListView(ListCreateAPIView):

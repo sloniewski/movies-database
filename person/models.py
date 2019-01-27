@@ -20,7 +20,7 @@ class Person(models.Model):
         return self.get_absolute_url()
 
     def get_absolute_url(self):
-        return reverse('person-detail', kwargs={'pk': self.pk})
+        return reverse('person:person-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.second_name)

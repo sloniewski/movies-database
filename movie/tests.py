@@ -35,7 +35,7 @@ class TestMovieViews(TestCase):
         url = reverse('movie:movie-list')
         response = self.client.get(url)
         self.assertEqual(
-            json.loads(response.content).pop().get('title'), 'bugs bunny')
+            json.loads(response.content)['results'].pop().get('title'), 'bugs bunny')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')
 

@@ -2,15 +2,15 @@ from rest_framework import routers
 
 from person import views
 
+app_name = 'person'
+
 router = routers.SimpleRouter()
 router.register(
-    r'person',
+    'person',
     views.PersonViewSet,
     base_name='person',
 )
 
-urlpatterns = [
-
-]
+urlpatterns = []
 
 urlpatterns += router.urls

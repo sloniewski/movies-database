@@ -41,9 +41,6 @@ class Movie(models.Model):
 
     @property
     def url(self):
-        return self.get_absolute_url()
-
-    def get_absolute_url(self):
         return reverse('movie:movie-detail', kwargs={'pk': self.pk})
 
     def __str__(self):

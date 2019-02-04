@@ -46,6 +46,11 @@ class MovieDetailSerializer(serializers.ModelSerializer):
 
 
 class MovieListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        read_only=True,
+        view_name='movie:movie-detail',
+        lookup_field='pk',
+    )
 
     class Meta:
         model = Movie

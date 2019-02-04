@@ -8,8 +8,14 @@ app_name = 'users'
 router = routers.SimpleRouter()
 router.register(
     'watchlist',
-    views.WatchListView,
+    views.WatchListViewSet,
     base_name='watchlist',
+)
+
+router.register(
+    'watchlist_entry',
+    views.WatchListEntryViewSet,
+    base_name='watchlist_entry',
 )
 
 urlpatterns = [

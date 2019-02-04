@@ -6,9 +6,9 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
-from .serializers import WatchListSerializer
+from .serializers import WatchListSerializer, WatchListEntrySerializer
 from .permissions import IsUserOrReadOnly
-from .models import WatchList
+from .models import WatchList, WatchListEntry
 
 
 class LoginApiView(APIView):
@@ -54,10 +54,18 @@ class WhoAmI(View):
         return response
 
 
-class WatchListView(ModelViewSet):
+class WatchListViewSet(ModelViewSet):
     serializer_class = WatchListSerializer
     permission_classes = [IsUserOrReadOnly]
     lookup_url_kwarg = 'slug'
 
     def get_queryset(self):
         return WatchList.objects.all()
+
+
+class WatchListEntryViewSet(ModelViewSet):
+    serializer_class = WatchListEntrySerializer
+    permission_classes = [IsUserOrReadOnly]
+
+    def get_queryset(self):
+        return WatchListEntry.objects.all()

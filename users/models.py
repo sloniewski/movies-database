@@ -37,6 +37,9 @@ class WatchList(models.Model):
         generate_slug(instance=self)
         return super().save(*args, **kwargs)
 
+    def __str__(self):
+        return '{} {}'.format(self.user.username, self.name)
+
     @property
     def url(self):
         return reverse('users:watchlist-detail', kwargs={'slug': self.slug})
@@ -46,6 +49,7 @@ class WatchListEntry(models.Model):
     list = models.ForeignKey(
         WatchList,
         on_delete=models.CASCADE,
+        related_name='entries',
     )
     movie = models.ForeignKey(
         Movie,

@@ -17,9 +17,6 @@ class Person(models.Model):
 
     @property
     def url(self):
-        return self.get_absolute_url()
-
-    def get_absolute_url(self):
         return reverse('person:person-detail', kwargs={'pk': self.pk})
 
     def __str__(self):

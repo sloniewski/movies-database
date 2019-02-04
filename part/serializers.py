@@ -16,6 +16,11 @@ class PersonListSerializer(serializers.ModelSerializer):
 
 
 class CastListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='part:cast-detail',
+        lookup_field='pk',
+    )
+
     person = PersonListSerializer(
         read_only=True,
     )
@@ -26,6 +31,7 @@ class CastListSerializer(serializers.ModelSerializer):
             'id',
             'person',
             'character',
+            'url',
         )
 
 
@@ -35,7 +41,7 @@ class CastSerializer(serializers.ModelSerializer):
         read_only=True,
     )
     person_url = serializers.URLField(
-        source='person.get_absolute_url',
+        source='person.url',
         read_only=True,
     )
     person_name = serializers.CharField(

@@ -10,7 +10,7 @@ from rest_framework.authtoken.models import Token
 User = get_user_model()
 
 
-class TestAuth(TestCase):
+class BaseTest(TestCase):
 
     def setUp(self):
         self.client = APIClient()
@@ -22,6 +22,9 @@ class TestAuth(TestCase):
         )
         self.token = Token.objects.create(user=self.user)
 
+
+class TestAuth(BaseTest):
+
     def test_token_auth(self):
         url = reverse('users:token-auth')
         data = {
@@ -31,3 +34,11 @@ class TestAuth(TestCase):
         response = self.client.post(url, data=data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content)['token'], self.token.key)
+
+
+class TestWatchList(BaseTest):
+
+    def test_watchlist_get(self):
+        url = reverse('users:watchlist-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)

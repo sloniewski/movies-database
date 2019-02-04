@@ -1,10 +1,14 @@
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
-from django.views import View
-
-from rest_framework.views import APIView
-
 import json
+
+from django.contrib.auth import authenticate, login
+from django.views import View
+from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+
+from .serializers import WatchListSerializer
+from .permissions import IsUserOrReadOnly
+from .models import WatchList
 
 
 class LoginApiView(APIView):
@@ -48,3 +52,12 @@ class WhoAmI(View):
         else:
             response.write('user is none')
         return response
+
+
+class WatchListView(ModelViewSet):
+    serializer_class = WatchListSerializer
+    permission_classes = [IsUserOrReadOnly]
+    lookup_url_kwarg = 'slug'
+
+    def get_queryset(self):
+        return WatchList.objects.all()

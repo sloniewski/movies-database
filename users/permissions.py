@@ -7,3 +7,13 @@ class IsAdminOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True
         return request.user.is_staff
+
+
+class IsUserOrReadOnly(BasePermission):
+    object_owner = 'user'
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in SAFE_METHODS:
+            return True
+        obj_owner = getattr(obj, self.object_owner, None)
+        return request.user == obj_owner

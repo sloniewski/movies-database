@@ -33,6 +33,10 @@ class CastMemberListSerializer(serializers.ModelSerializer):
 
 
 class PersonListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='person:person-detail',
+        lookup_field='pk',
+    )
 
     class Meta:
         model = Person
@@ -45,6 +49,11 @@ class PersonListSerializer(serializers.ModelSerializer):
 
 
 class PersonDetailSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='person:person-detail',
+        lookup_field='pk',
+    )
+
     crew_member = CrewMemberListSerializer(
         many=True,
         read_only=True,
@@ -64,4 +73,5 @@ class PersonDetailSerializer(serializers.ModelSerializer):
             'year_of_birth',
             'cast_member',
             'crew_member',
+            'url',
         )

@@ -7,6 +7,9 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework.authtoken.models import Token
 
+
+from .models import WatchList
+
 User = get_user_model()
 
 
@@ -38,7 +41,18 @@ class TestAuth(BaseTest):
 
 class TestWatchList(BaseTest):
 
+    def setUp(self):
+        super().setUp()
+        self.watchlist = WatchList.objects.create(name='some name', user=self.user)
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+
     def test_watchlist_get(self):
         url = reverse('users:watchlist-list')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+    def test_watchilist_detail_get(self):
+        url = reverse('users:watchlist-detail', kwargs={'slug': self.watchlist.slug})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+

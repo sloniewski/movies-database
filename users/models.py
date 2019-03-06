@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 from main.utils import generate_slug
+from main.models import TimeStampMixin
 from movie.models import Movie
 
 
@@ -21,7 +22,7 @@ class RatingScore(models.Model):
     value = models.PositiveIntegerField(null=True)
 
 
-class WatchList(models.Model):
+class WatchList(TimeStampMixin, models.Model):
     name = models.CharField(max_length=128)
     slug = models.SlugField(
         unique=True,

@@ -52,6 +52,8 @@ class WatchListDetailSerializer(serializers.ModelSerializer):
             'name',
             'url',
             'entries',
+            'created',
+            'edited',
         )
 
 

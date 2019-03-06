@@ -55,4 +55,4 @@ class TestWatchList(BaseTest):
         url = reverse('users:watchlist-detail', kwargs={'slug': self.watchlist.slug})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-
+        self.assertEqual(json.loads(response.content)['name'], self.watchlist.name)

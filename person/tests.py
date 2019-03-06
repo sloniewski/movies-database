@@ -28,7 +28,7 @@ class TestViews(TestCase):
         )
 
     def test_person_detail_get(self):
-        url = reverse('person:person-detail', kwargs={'pk': self.person.pk})
+        url = reverse('person:person-detail', kwargs={'slug': self.person.slug})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')

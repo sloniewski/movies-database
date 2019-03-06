@@ -14,6 +14,8 @@ class PersonViewSet(ModelViewSet):
     pagination_class = DefaultPaginator
     queryset = Person.objects.all().prefetch_related('cast_member')
     permission_classes = (IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
+    lookup_url_kwarg = 'slug'
+    lookup_field = 'slug'
 
     def get_serializer_class(self):
         if self.request.method.lower() == 'get':

@@ -1,4 +1,3 @@
-from django.shortcuts import reverse
 from django.db import models
 
 
@@ -10,10 +9,6 @@ class Genre(models.Model):
 
     def __str__(self):
         return '{}'.format(self.name)
-
-    @property
-    def movies_list_url(self):
-        return reverse('genre-movie-list', kwargs={'pk': self.pk})
 
 
 class Movie(models.Model):
@@ -38,10 +33,6 @@ class Movie(models.Model):
         for director in directors_queryset:
             res.append(director.fullname)
         return res
-
-    @property
-    def url(self):
-        return reverse('movie:movie-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return '{} {}'.format(self.title, self.year)

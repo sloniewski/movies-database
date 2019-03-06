@@ -5,22 +5,19 @@ from person.models import Person
 
 
 class PersonListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='person:person-detail',
+    )
 
     class Meta:
         model = Person
         fields = (
-            'id',
             'fullname',
             'url',
         )
 
 
 class CastListSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name='part:cast-detail',
-        lookup_field='pk',
-    )
-
     person = PersonListSerializer(
         read_only=True,
     )
@@ -28,10 +25,8 @@ class CastListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cast
         fields = (
-            'id',
             'person',
             'character',
-            'url',
         )
 
 
@@ -75,7 +70,6 @@ class CrewListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Crew
         fields = (
-            'id',
             'person',
             'credit',
         )

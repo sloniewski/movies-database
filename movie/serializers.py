@@ -10,7 +10,6 @@ class GenreListSerializer(serializers.ModelSerializer):
         model = Genre
         fields = (
             'name',
-            'movies_list_url',
         )
 
 
@@ -55,7 +54,6 @@ class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = (
-            'id',
             'title',
             'year',
             'director',

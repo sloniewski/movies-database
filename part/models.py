@@ -20,6 +20,9 @@ class Cast(models.Model):
         max_length=32,
     )
 
+    class Meta:
+        verbose_name_plural = 'Cast'
+
     def __str__(self):
         return '{} - {}'.format(self.movie, self.person)
 
@@ -48,6 +51,9 @@ class Crew(models.Model):
         blank=True,
         null=True,
     )
+
+    class Meta:
+        verbose_name_plural = 'Crew'
 
     def __str__(self):
         return '{} - {}'.format(self.movie, self.person)

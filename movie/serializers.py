@@ -14,6 +14,11 @@ class GenreListSerializer(serializers.ModelSerializer):
 
 
 class MovieDetailSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        read_only=True,
+        view_name='movie:movie-detail',
+        lookup_field='slug',
+    )
 
     genre = GenreListSerializer(
         many=True,
@@ -33,7 +38,6 @@ class MovieDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = (
-            'id',
             'title',
             'year',
             'director',
@@ -41,6 +45,7 @@ class MovieDetailSerializer(serializers.ModelSerializer):
             'cast',
             'genre',
             'crew',
+            'url',
         )
 
 

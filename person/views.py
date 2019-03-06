@@ -1,4 +1,4 @@
-
+from django.urls import reverse
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
@@ -18,7 +18,7 @@ class PersonViewSet(ModelViewSet):
     lookup_field = 'slug'
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get':
+        if self.request.method.lower() == 'get' and self.request.path == reverse('person:person-list'):
             return PersonListSerializer
         else:
             return super(PersonViewSet, self).get_serializer_class()

@@ -56,3 +56,10 @@ class WatchListEntry(models.Model):
         on_delete=models.CASCADE,
     )
 
+    class Meta:
+        unique_together = [
+            ('list', 'movie'),
+        ]
+
+    def __str__(self):
+        return 'List:{} {}'.format(self.list.id, self.movie.title)

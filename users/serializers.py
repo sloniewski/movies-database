@@ -1,6 +1,28 @@
 from rest_framework import serializers
 
-from .models import WatchList, WatchListEntry
+from .models import WatchList, WatchListEntry, CustomUser
+from movie.serializers import MovieListSerializer
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CustomUser
+        fields = [
+            'id',
+            'username',
+            'email',
+        ]
+
+
+class WatchListEntrySerializer(serializers.ModelSerializer):
+    movie = MovieListSerializer(read_only=True)
+
+    class Meta:
+        model = WatchListEntry
+        fields = (
+            'movie',
+        )
 
 
 class WatchListSerializer(serializers.ModelSerializer):
@@ -12,7 +34,6 @@ class WatchListSerializer(serializers.ModelSerializer):
     class Meta:
         model = WatchList
         fields = (
-            'id',
             'name',
             'url',
         )
@@ -23,27 +44,15 @@ class WatchListDetailSerializer(serializers.ModelSerializer):
         view_name='users:watchlist-detail',
         lookup_field='slug',
     )
+    entries = WatchListEntrySerializer(many=True, read_only=True)
 
     class Meta:
         model = WatchList
         fields = (
-            'id',
             'name',
             'url',
             'entries',
         )
 
 
-class WatchListEntrySerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name='users:watchlist_entry-detail',
-        lookup_field='pk',
-    )
 
-    class Meta:
-        model = WatchListEntry
-        fields = (
-            'list',
-            'movie',
-            'url',
-        )

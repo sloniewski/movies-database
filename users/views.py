@@ -1,13 +1,18 @@
 import json
 
 from django.contrib.auth import authenticate, login
+from django.urls import reverse
 from django.views import View
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
-from .serializers import WatchListSerializer, WatchListEntrySerializer
-from .permissions import IsUserOrReadOnly
+from .serializers import (
+    WatchListSerializer,
+    WatchListDetailSerializer,
+    WatchListEntrySerializer
+)
 from .models import WatchList, WatchListEntry
 
 
@@ -55,17 +60,25 @@ class WhoAmI(View):
 
 
 class WatchListViewSet(ModelViewSet):
-    serializer_class = WatchListSerializer
-    permission_classes = [IsUserOrReadOnly]
+    serializer_class = WatchListDetailSerializer
+    permission_classes = [IsAuthenticated]
     lookup_url_kwarg = 'slug'
+    lookup_field = 'slug'
+    model = WatchList
 
     def get_queryset(self):
-        return WatchList.objects.all()
+        return WatchList.objects.filter(user=self.request.user)
+
+    def get_serializer_class(self):
+        if self.request.method.lower() == 'get' and self.request.path == reverse('users:watchlist-list'):
+            return WatchListSerializer
+        else:
+            return super(WatchListViewSet, self).get_serializer_class()
 
 
 class WatchListEntryViewSet(ModelViewSet):
     serializer_class = WatchListEntrySerializer
-    permission_classes = [IsUserOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return WatchListEntry.objects.all()

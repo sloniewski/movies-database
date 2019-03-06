@@ -7,8 +7,8 @@ app_name = 'users'
 
 router = routers.SimpleRouter()
 router.register(
-    'watchlist',
-    views.WatchListViewSet,
+    prefix='watchlist',
+    viewset=views.WatchListViewSet,
     base_name='watchlist',
 )
 

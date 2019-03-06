@@ -1,6 +1,20 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+from users.models import CustomUser, WatchListEntry, WatchList
+
+
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
+    pass
+
+
+@admin.register(WatchListEntry)
+class WatchListEntryAdmin(ModelAdmin):
+    pass
+
+
+@admin.register(WatchList)
+class WatchListAdmin(ModelAdmin):
+    readonly_fields = ['slug']

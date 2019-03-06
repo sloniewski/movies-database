@@ -1,7 +1,6 @@
 from django.urls import reverse
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from users.permissions import IsAdminOrReadOnly
 from movie.models import Movie, Genre
@@ -17,8 +16,10 @@ class MovieViewSet(ModelViewSet):
     model = Movie
     serializer_class = MovieDetailSerializer
     queryset = Movie.objects.all()
-    permission_classes = (IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
+    permission_classes = [IsAdminOrReadOnly]
     pagination_class = DefaultPaginator
+    lookup_field = 'slug'
+    lookup_url_kwarg = 'slug'
 
     def get_serializer_class(self):
         if self.request.method.lower() == 'get' and self.request.path == reverse('movie:movie-list'):

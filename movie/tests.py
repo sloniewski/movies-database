@@ -78,3 +78,9 @@ class TestMovieViews(TestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, 403)
+
+    def test_movie_detail_get(self):
+        url = reverse('movie:movie-detail', kwargs={'slug': self.movie.slug})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.content).get('title'), 'bugs bunny')

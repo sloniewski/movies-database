@@ -48,7 +48,7 @@ class MovieListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         read_only=True,
         view_name='movie:movie-detail',
-        lookup_field='pk',
+        lookup_field='slug',
     )
 
     class Meta:

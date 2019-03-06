@@ -1,5 +1,7 @@
 from django.db import models
 
+from main.utils import generate_slug
+
 
 class Genre(models.Model):
     name = models.CharField(
@@ -25,6 +27,11 @@ class Movie(models.Model):
         null=True,
         blank=True,
     )
+    slug = models.SlugField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        generate_slug(self, from_fields=['title', 'year'])
+        super().save(*args, **kwargs)
 
     @property
     def director(self):

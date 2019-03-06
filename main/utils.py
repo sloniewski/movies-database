@@ -17,10 +17,14 @@ def random_string(length=9):
     return ''.join(choice[0:length])
 
 
-def generate_slug(instance):
+def generate_slug(instance, from_fields=None):
     model = type(instance)
     if not instance.slug:
-        slug = slugify(instance.name)
+        if from_fields is not None:
+            text = ' '.join([str(getattr(instance, field)) for field in from_fields])
+        else:
+            text = instance.name
+        slug = slugify(text)
         if model.objects.filter(slug=slug).exists():
             slug = slug + '-' + random_string(4)
         instance.slug = slug

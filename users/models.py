@@ -1,4 +1,3 @@
-from django.shortcuts import reverse
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -39,10 +38,6 @@ class WatchList(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.user.username, self.name)
-
-    @property
-    def url(self):
-        return reverse('users:watchlist-detail', kwargs={'slug': self.slug})
 
 
 class WatchListEntry(models.Model):

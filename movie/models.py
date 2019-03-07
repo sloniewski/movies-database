@@ -13,7 +13,29 @@ class Genre(models.Model):
         return '{}'.format(self.name)
 
 
+class MovieQuerySet(models.QuerySet):
+
+    def with_rating(self):
+        return self.annotate(rating=models.Avg('ratings__value'))
+
+    def search(self):
+        return self.filter()
+
+
+class MovieManager(models.Manager):
+
+    def get_queryset(self):
+        return MovieQuerySet(self.model, using=self.db)
+
+    def with_rating(self):
+        return self.get_queryset().with_rating()
+
+    def search(self, keyword):
+        return self.get_queryset().search(keyword)
+
+
 class Movie(models.Model):
+    objects = MovieManager()
     title = models.CharField(
         max_length=64,
     )
@@ -22,10 +44,6 @@ class Movie(models.Model):
     year = models.IntegerField()
     genre = models.ManyToManyField(
         Genre,
-    )
-    rating = models.IntegerField(
-        null=True,
-        blank=True,
     )
     slug = models.SlugField(null=True, blank=True)
 

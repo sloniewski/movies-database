@@ -27,6 +27,13 @@ class MovieViewSet(ModelViewSet):
         else:
             return super(MovieViewSet, self).get_serializer_class()
 
+    def get_queryset(self):
+        queryset = super().get_queryset().with_rating()
+        keyword = self.request.GET.get('search')
+        if keyword is not None:
+            queryset = queryset.filter(title__icontains=keyword)
+        return queryset
+
 
 class GenreMoviesMoviesApiListView(ListCreateAPIView):
     serializer_class = MovieListSerializer

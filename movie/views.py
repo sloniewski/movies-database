@@ -31,7 +31,7 @@ class MovieViewSet(ModelViewSet):
         queryset = super().get_queryset().with_rating()
         keyword = self.request.GET.get('search')
         if keyword is not None:
-            queryset = queryset.filter(title__icontains=keyword)
+            queryset = queryset.search(keyword)
         return queryset
 
 

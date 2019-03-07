@@ -20,17 +20,14 @@ class MovieDetailSerializer(serializers.ModelSerializer):
         lookup_field='slug',
     )
     rating = serializers.FloatField(read_only=True)
-
     genre = GenreListSerializer(
         many=True,
         read_only=True,
     )
-
     cast = CastListSerializer(
         many=True,
         read_only=True,
     )
-
     crew = CrewListSerializer(
         many=True,
         read_only=True,
@@ -57,6 +54,7 @@ class MovieListSerializer(serializers.ModelSerializer):
         view_name='movie:movie-detail',
         lookup_field='slug',
     )
+    rating = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Movie
@@ -65,4 +63,5 @@ class MovieListSerializer(serializers.ModelSerializer):
             'year',
             'director',
             'url',
+            'rating',
         )

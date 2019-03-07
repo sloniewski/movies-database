@@ -13,13 +13,23 @@ class CustomUser(AbstractUser):
 class RatingScore(models.Model):
     user = models.ForeignKey(
         CustomUser,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     movie = models.ForeignKey(
         Movie,
         on_delete=models.CASCADE,
+        related_name='ratings',
     )
     value = models.PositiveIntegerField(null=True)
+
+    class Meta:
+        verbose_name_plural = 'Ratings'
+        unique_together = [
+            ('user', 'movie')
+        ]
+
+    def __str__(self):
+        return 'user:{} score:{}'.format(self.user.username, self.value)
 
 
 class WatchList(TimeStampMixin, models.Model):

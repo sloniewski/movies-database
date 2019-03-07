@@ -1,6 +1,7 @@
 from django.db import models
 
 from main.utils import generate_slug
+from django.contrib.postgres.search import SearchVector, SearchRank, SearchQuery
 
 
 class Genre(models.Model):
@@ -18,8 +19,15 @@ class MovieQuerySet(models.QuerySet):
     def with_rating(self):
         return self.annotate(rating=models.Avg('ratings__value'))
 
-    def search(self):
-        return self.filter()
+    def search(self, keyword):
+        search_vector = SearchVector('title', weight='A') \
+                        + SearchVector('description', weight='B')
+        seach_query = SearchQuery(keyword)
+
+        return self.annotate(search=search_vector)\
+            .annotate(rank=SearchRank(search_vector, seach_query))\
+            .filter(search=seach_query)\
+            .filter(rank__gte=0.2).order_by('-rank')
 
 
 class MovieManager(models.Manager):
@@ -39,7 +47,7 @@ class Movie(models.Model):
     title = models.CharField(
         max_length=64,
     )
-    description = models.TextField()
+    description = models.TextField(default='Not provided')
 
     year = models.IntegerField()
     genre = models.ManyToManyField(

@@ -3,6 +3,7 @@ from django.contrib.admin import ModelAdmin
 
 from .models import Cast, Crew
 
+
 @admin.register(Cast)
 class CastAdmin(ModelAdmin):
     pass

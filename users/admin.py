@@ -2,7 +2,17 @@ from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 from django.contrib.auth.admin import UserAdmin
 
-from users.models import CustomUser, WatchListEntry, WatchList
+from users.models import (
+    CustomUser,
+    WatchListEntry,
+    WatchList,
+    RatingScore,
+)
+
+
+@admin.register(RatingScore)
+class RatingAdmin(ModelAdmin):
+    pass
 
 
 @admin.register(CustomUser)

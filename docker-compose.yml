@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  postgres_db:
+    image: postgres
+    restart: always
+    container_name: database
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=super_secret
+      - POSTGRES_DB=movie_database
+    ports:
+      - "5433:5432"
+
+  app:
+    build: .
+    container_name: movies_database
+    volumes:
+      - .:/home/project
+    command: ./manage.py runserver 0.0.0.0:8000 --settings=movies_database.settings.docker
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres_db

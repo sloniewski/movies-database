@@ -1,13 +1,17 @@
 from rest_framework import serializers
 
 from part.models import Crew, Cast
+from movie.models import Movie
 from person.models import Person
+
+API_VERSION = 'api-v1'
 
 
 class PersonListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name='person-detail',
+        view_name=API_VERSION + ':person-detail',
         lookup_field='slug',
+        read_only=True,
     )
 
     class Meta:
@@ -18,10 +22,24 @@ class PersonListSerializer(serializers.ModelSerializer):
         )
 
 
-class CastListSerializer(serializers.ModelSerializer):
-    person = PersonListSerializer(
+class MovieListSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name=API_VERSION + ':movie-detail',
+        lookup_field='slug',
         read_only=True,
     )
+
+    class Meta:
+        model = Movie
+        fields = [
+            'title',
+            'year',
+            'url'
+        ]
+
+
+class CastListSerializer(serializers.ModelSerializer):
+    person = PersonListSerializer()
 
     class Meta:
         model = Cast
@@ -31,21 +49,23 @@ class CastListSerializer(serializers.ModelSerializer):
         )
 
 
+class CrewListSerializer(serializers.ModelSerializer):
+    person = PersonListSerializer()
+
+    class Meta:
+        model = Crew
+        fields = (
+            'person',
+            'credit',
+        )
+
+
 class CastSerializer(serializers.ModelSerializer):
-    movie_url = serializers.URLField(
-        source='movie.get_absolute_url',
-        read_only=True,
-    )
-    person_url = serializers.URLField(
-        source='person.url',
-        read_only=True,
-    )
-    person_name = serializers.CharField(
-        source='person.fullname',
-        read_only=True,
-    )
-    url = serializers.URLField(
-        source='get_absolute_url',
+    movie = MovieListSerializer()
+    person = PersonListSerializer()
+
+    url = serializers.HyperlinkedIdentityField(
+        view_name=API_VERSION + ':cast-detail',
         read_only=True,
     )
 
@@ -53,45 +73,28 @@ class CastSerializer(serializers.ModelSerializer):
         model = Cast
         fields = (
             'id',
+            'character',
             'movie',
             'person',
-            'character',
-            'movie_url',
-            'person_url',
-            'person_name',
             'url',
         )
 
 
-class CrewListSerializer(serializers.ModelSerializer):
-    person = PersonListSerializer(
-        read_only=True,
-    )
-
-    class Meta:
-        model = Crew
-        fields = (
-            'person',
-            'credit',
-        )
-
-
 class CrewSerializer(serializers.ModelSerializer):
-    movie_url = serializers.URLField(
-        source='movie.get_absolute_url',
-        read_only=True,
-    )
-    person_url = serializers.URLField(
-        source='person.get_absolute_url',
+    movie = MovieListSerializer()
+    person = PersonListSerializer()
+
+    url = serializers.HyperlinkedIdentityField(
+        view_name=API_VERSION + ':crew-detail',
         read_only=True,
     )
 
     class Meta:
         model = Crew
         fields = (
+            'id',
+            'credit',
             'person',
             'movie',
-            'credit',
-            'movie_url',
-            'person_url',
+            'url',
         )

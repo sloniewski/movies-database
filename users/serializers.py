@@ -15,16 +15,6 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
 
-class WatchListEntrySerializer(serializers.ModelSerializer):
-    movie = MovieListSerializer(read_only=True)
-
-    class Meta:
-        model = WatchListEntry
-        fields = (
-            'movie',
-        )
-
-
 class WatchListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='api-v1:watchlist-detail',
@@ -34,9 +24,25 @@ class WatchListSerializer(serializers.ModelSerializer):
     class Meta:
         model = WatchList
         fields = (
+            'slug',
             'name',
             'url',
         )
+
+
+class WatchListEntrySerializer(serializers.ModelSerializer):
+    movie = MovieListSerializer()
+    list = WatchListSerializer()
+
+    class Meta:
+        model = WatchListEntry
+        fields = (
+            'movie',
+            'list',
+        )
+
+    def create(self, validated_data):
+        pass
 
 
 class WatchListDetailSerializer(serializers.ModelSerializer):

@@ -85,4 +85,4 @@ class WatchListEntryViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return WatchListEntry.objects.all()
+        return WatchListEntry.objects.filter(list__user=self.request.user)

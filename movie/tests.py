@@ -7,6 +7,8 @@ from rest_framework.test import APIClient
 from rest_framework.authtoken.models import Token
 
 from movie.models import Movie
+from person.models import Person
+from part.models import Cast
 
 
 User = get_user_model()
@@ -31,6 +33,14 @@ class TestMovieViews(TestCase):
             is_staff=True,
         )
         self.token = Token.objects.create(user=self.user)
+        self.person = Person.objects.create(
+            first_name='test_1', second_name='test_2',
+            year_of_birth=1973
+        )
+        self.actor = Cast.objects.create(
+            person=self.person, movie=self.movie,
+            character='testing'
+        )
 
     def test_get_list_movies(self):
         url = reverse(self.api_version + ':movie-list')

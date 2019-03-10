@@ -47,7 +47,11 @@ class MovieDetailSerializer(serializers.ModelSerializer):
             'crew',
             'url',
             'rating',
+            'slug',
         )
+        read_only_fields = [
+            'slug',
+        ]
 
 
 class MovieListSerializer(serializers.ModelSerializer):
@@ -68,3 +72,6 @@ class MovieListSerializer(serializers.ModelSerializer):
             'rating',
             'slug'
         )
+        read_only_fields = [
+            'slug',
+        ]

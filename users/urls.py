@@ -13,9 +13,9 @@ router.register(
 )
 
 router.register(
-    'watchlist_entry',
+    'watchlist-entry',
     views.WatchListEntryViewSet,
-    base_name='watchlist_entry',
+    base_name='watchlist-entry',
 )
 
 urlpatterns = [

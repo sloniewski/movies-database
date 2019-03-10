@@ -35,6 +35,6 @@ urlpatterns = [
 
     url(r'^api/v1/', include((router.urls, 'api-v1'))),
 
-    url(r'^api/v1/users', include('users.urls'))
+    url(r'^api/users', include('users.urls'))
 
 ]

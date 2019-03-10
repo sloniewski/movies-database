@@ -66,6 +66,7 @@ class WatchListEntry(models.Model):
         unique_together = [
             ('list', 'movie'),
         ]
+        verbose_name_plural = 'Watchlist entries'
 
     def __str__(self):
         return 'List:{} {}'.format(self.list.id, self.movie.title)

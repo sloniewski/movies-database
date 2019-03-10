@@ -15,19 +15,26 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+
+from person.urls import router as person_router
+from movie.urls import router as movie_router
+from part.urls import router as part_router
+from users.urls import router as users_router
+
+
+router = DefaultRouter()
+router.registry.extend(person_router.registry)
+router.registry.extend(movie_router.registry)
+router.registry.extend(part_router.registry)
+router.registry.extend(users_router.registry)
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
 
-    url(r'^api/', include('person.urls')),
+    url(r'^api/v1/', include((router.urls, 'api-v1'))),
 
-    url(r'^api/', include('movie.urls')),
+    url(r'^api/v1/users', include('users.urls'))
 
-    url(r'^api/', include('part.urls')),
-
-    url(r'^api/', include('rest_framework.urls',
-                        namespace='rest_framework')),
-
-    url(r'^api/', include('users.urls')),
 ]

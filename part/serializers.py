@@ -6,7 +6,7 @@ from person.models import Person
 
 class PersonListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name='person:person-detail',
+        view_name='person-detail',
         lookup_field='slug',
     )
 

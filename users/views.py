@@ -65,15 +65,19 @@ class WatchListViewSet(ModelViewSet):
     lookup_url_kwarg = 'slug'
     lookup_field = 'slug'
     model = WatchList
+    api_version = 'api-v1'
 
     def get_queryset(self):
         return WatchList.objects.filter(user=self.request.user)
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get' and self.request.path == reverse('users:watchlist-list'):
+        if self.request.method.lower() == 'get' and self.request.path == reverse(self.api_version + ':watchlist-list'):
             return WatchListSerializer
         else:
             return super(WatchListViewSet, self).get_serializer_class()
+
+    def perform_create(self, serializer):
+        return serializer.save(user=self.request.user)
 
 
 class WatchListEntryViewSet(ModelViewSet):

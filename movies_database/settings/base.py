@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'person',
     'movie',
     'users',
+    'part',
 ]
 
 MIDDLEWARE = [

@@ -12,5 +12,3 @@ router.register(
 )
 
 urlpatterns = []
-
-urlpatterns += router.urls

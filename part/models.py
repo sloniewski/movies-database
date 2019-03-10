@@ -1,5 +1,4 @@
 from django.db import models
-from django.shortcuts import reverse
 
 from movie.models import Movie
 from person.models import Person
@@ -25,9 +24,6 @@ class Cast(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.movie, self.person)
-
-    def get_absolute_url(self):
-        return reverse('part:cast-detail', kwargs={'pk': self.pk})
 
 
 class Crew(models.Model):

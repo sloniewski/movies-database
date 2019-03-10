@@ -40,6 +40,7 @@ class TestAuth(BaseTest):
 
 
 class TestWatchList(BaseTest):
+    api_version = 'api-v1'
 
     def setUp(self):
         super().setUp()
@@ -47,12 +48,20 @@ class TestWatchList(BaseTest):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
 
     def test_watchlist_get(self):
-        url = reverse('users:watchlist-list')
+        url = reverse(self.api_version + ':watchlist-list')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_watchilist_detail_get(self):
-        url = reverse('users:watchlist-detail', kwargs={'slug': self.watchlist.slug})
+        url = reverse(self.api_version + ':watchlist-detail', kwargs={'slug': self.watchlist.slug})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content)['name'], self.watchlist.name)
+
+    def test_watchlist_post(self):
+        url = reverse(self.api_version + ':watchlist-list')
+        data = {
+            'name': 'test list',
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)

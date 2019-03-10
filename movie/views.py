@@ -20,9 +20,10 @@ class MovieViewSet(ModelViewSet):
     pagination_class = DefaultPaginator
     lookup_field = 'slug'
     lookup_url_kwarg = 'slug'
+    api_version = 'api-v1'
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get' and self.request.path == reverse('movie:movie-list'):
+        if self.request.method.lower() == 'get' and self.request.path == reverse(self.api_version + ':movie-list'):
             return MovieListSerializer
         else:
             return super(MovieViewSet, self).get_serializer_class()

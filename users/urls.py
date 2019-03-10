@@ -27,5 +27,3 @@ urlpatterns = [
     path('whoami/', views.WhoAmI.as_view(), name='whoami'),
 
 ]
-
-urlpatterns += router.urls

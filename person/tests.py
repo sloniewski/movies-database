@@ -8,6 +8,7 @@ from person.models import Person
 
 
 class TestViews(TestCase):
+    api_version = 'api-v1'
 
     def setUp(self):
         self.client = APIClient()
@@ -18,7 +19,7 @@ class TestViews(TestCase):
         )
 
     def test_person_list_get(self):
-        url = reverse('person:person-list')
+        url = reverse(self.api_version + ':person-list')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')
@@ -28,7 +29,7 @@ class TestViews(TestCase):
         )
 
     def test_person_detail_get(self):
-        url = reverse('person:person-detail', kwargs={'slug': self.person.slug})
+        url = reverse(self.api_version + ':person-detail', kwargs={'slug': self.person.slug})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')
@@ -38,7 +39,7 @@ class TestViews(TestCase):
         )
 
     def test_person_list_post(self):
-            url = reverse('person:person-list')
+            url = reverse(self.api_version + ':person-list')
             data = {
                 'first_name': 'Elmer',
                 'second_name': 'Fudd',

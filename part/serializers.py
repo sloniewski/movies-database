@@ -4,12 +4,10 @@ from part.models import Crew, Cast
 from movie.models import Movie
 from person.models import Person
 
-API_VERSION = 'api-v1'
-
 
 class PersonListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name=API_VERSION + ':person-detail',
+        view_name='person-detail',
         lookup_field='slug',
         read_only=True,
     )
@@ -24,7 +22,7 @@ class PersonListSerializer(serializers.ModelSerializer):
 
 class MovieListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name=API_VERSION + ':movie-detail',
+        view_name='movie-detail',
         lookup_field='slug',
         read_only=True,
     )
@@ -65,7 +63,7 @@ class CastSerializer(serializers.ModelSerializer):
     person = PersonListSerializer()
 
     url = serializers.HyperlinkedIdentityField(
-        view_name=API_VERSION + ':cast-detail',
+        view_name='cast-detail',
         read_only=True,
     )
 
@@ -85,7 +83,7 @@ class CrewSerializer(serializers.ModelSerializer):
     person = PersonListSerializer()
 
     url = serializers.HyperlinkedIdentityField(
-        view_name=API_VERSION + ':crew-detail',
+        view_name='crew-detail',
         read_only=True,
     )
 

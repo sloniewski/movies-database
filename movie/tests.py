@@ -15,7 +15,7 @@ User = get_user_model()
 
 
 class TestMovieViews(TestCase):
-    api_version = 'api-v1'
+    api_version = 'v1'
 
     def setUp(self):
         self.client = APIClient()
@@ -43,7 +43,7 @@ class TestMovieViews(TestCase):
         )
 
     def test_get_list_movies(self):
-        url = reverse(self.api_version + ':movie-list')
+        url = reverse('movie-list', kwargs={'version': self.api_version})
         response = self.client.get(url)
         self.assertEqual(
             json.loads(response.content)['results'].pop().get('title'), 'bugs bunny')
@@ -51,7 +51,7 @@ class TestMovieViews(TestCase):
         self.assertEqual(response['Content-Type'], 'application/json')
 
     def test_post_movie(self):
-        url = reverse(self.api_version + ':movie-list')
+        url = reverse('movie-list', kwargs={'version': self.api_version})
         data = {
             'title': 'huntin with elmer',
             'description': 'huntin rabbits',
@@ -62,7 +62,7 @@ class TestMovieViews(TestCase):
         self.assertEqual(response.status_code, 201)
 
     def test_post_movie_401(self):
-        url = reverse(self.api_version + ':movie-list')
+        url = reverse('movie-list', kwargs={'version': self.api_version})
         data = {
             'title': 'huntin with elmer',
             'description': 'huntin rabbits',
@@ -80,7 +80,7 @@ class TestMovieViews(TestCase):
         )
         token = Token.objects.create(user=user)
 
-        url = reverse(self.api_version + ':movie-list')
+        url = reverse('movie-list', kwargs={'version': self.api_version})
         data = {
             'title': 'huntin with elmer',
             'description': 'huntin rabbits',
@@ -92,7 +92,11 @@ class TestMovieViews(TestCase):
 
     def test_movie_detail_get(self):
         url = reverse(
-            self.api_version + ':movie-detail', kwargs={'slug': self.movie.slug}
+            viewname='movie-detail',
+            kwargs={
+                'slug': self.movie.slug,
+                'version': self.api_version
+            },
         )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)

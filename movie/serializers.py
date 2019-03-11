@@ -3,8 +3,6 @@ from rest_framework import serializers
 from movie.models import Genre, Movie
 from part.serializers import CastListSerializer, CrewListSerializer
 
-API_VERSION = 'api-v1'
-
 
 class GenreListSerializer(serializers.ModelSerializer):
 
@@ -18,7 +16,7 @@ class GenreListSerializer(serializers.ModelSerializer):
 class MovieDetailSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         read_only=True,
-        view_name=API_VERSION + ':movie-detail',
+        view_name='movie-detail',
         lookup_field='slug',
     )
     rating = serializers.FloatField(read_only=True)
@@ -57,7 +55,7 @@ class MovieDetailSerializer(serializers.ModelSerializer):
 class MovieListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         read_only=True,
-        view_name=API_VERSION + ':movie-detail',
+        view_name='movie-detail',
         lookup_field='slug',
     )
     rating = serializers.FloatField(read_only=True)

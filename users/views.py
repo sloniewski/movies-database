@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.views import View
 from django.http import HttpResponse
+
+from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
@@ -71,7 +73,7 @@ class WatchListViewSet(ModelViewSet):
         return WatchList.objects.filter(user=self.request.user)
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get' and self.request.path == reverse(self.api_version + ':watchlist-list'):
+        if self.request.method.lower() == 'get' and self.request.path == reverse('watchlist-list', request=self.request):
             return WatchListSerializer
         else:
             return super(WatchListViewSet, self).get_serializer_class()

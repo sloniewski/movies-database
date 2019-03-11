@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class WatchListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name='api-v1:watchlist-detail',
+        view_name='watchlist-detail',
         lookup_field='slug',
     )
 
@@ -47,7 +47,7 @@ class WatchListEntrySerializer(serializers.ModelSerializer):
 
 class WatchListDetailSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name='api-v1:watchlist-detail',
+        view_name='watchlist-detail',
         lookup_field='slug',
     )
     entries = WatchListEntrySerializer(many=True, read_only=True)

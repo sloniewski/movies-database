@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import include, path
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
@@ -31,10 +31,10 @@ router.registry.extend(users_router.registry)
 
 urlpatterns = [
 
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 
-    url(r'^api/v1/', include((router.urls, 'api-v1'))),
+    path('api/<version>/', include(router.urls)),
 
-    url(r'^api/users', include('users.urls'))
+    path('api/users', include('users.urls'))
 
 ]

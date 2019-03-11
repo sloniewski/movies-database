@@ -15,7 +15,7 @@ User = get_user_model()
 
 
 class TestMovieViews(TestCase):
-    api_version = 'api-v1'
+    api_version = 'v1'
 
     def setUp(self):
         self.client = APIClient()
@@ -44,17 +44,17 @@ class TestMovieViews(TestCase):
         )
 
     def test_crew_list_get(self):
-        url = reverse(self.api_version + ':crew-list')
+        url = reverse('crew-list', kwargs={'version': self.api_version})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_cast_list_get(self):
-        url = reverse(self.api_version + ':cast-list')
+        url = reverse('cast-list', kwargs={'version': self.api_version})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_cast_list_post(self):
-        url = reverse(self.api_version + ':cast-list')
+        url = reverse('cast-list', kwargs={'version': self.api_version})
         data = {
             'person': self.actor.pk,
             'movie': self.movie.slug,

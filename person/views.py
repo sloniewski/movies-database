@@ -17,7 +17,6 @@ class PersonViewSet(ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
     lookup_url_kwarg = 'slug'
     lookup_field = 'slug'
-    api_version = 'v1'
 
     def get_serializer_class(self):
         if self.request.method.lower() == 'get' \

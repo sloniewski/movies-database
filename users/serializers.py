@@ -37,6 +37,7 @@ class WatchListEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = WatchListEntry
         fields = (
+            'id',
             'movie',
             'list',
         )

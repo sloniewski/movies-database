@@ -134,3 +134,5 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
     'localhost:4200'
 ]
+
+APPEND_SLASH = False

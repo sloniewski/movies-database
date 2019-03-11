@@ -35,8 +35,6 @@ class TestAuth(BaseTest):
             'password': self.test_password,
         }
         response = self.client.post(url, data=data)
-        print('*'*60)
-        print(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content)['token'], self.token.key)
 
@@ -100,8 +98,8 @@ class TestWatchList(BaseTest):
         )
         response = self.client.delete(url)
         self.assertEqual(response.status_code, 204)
-        with self.assertRaises(WatchList.DoesNotExist):
-            WatchList.objects.get(id=retained_id)
+        with self.assertRaises(WatchListEntry.DoesNotExist):
+            obj = WatchListEntry.objects.get(id=retained_id)
 
     def test_entry_post(self):
         url = reverse('watchlist-entry-list', kwargs={'version': self.api_version})

@@ -48,6 +48,22 @@ class TestMovieViews(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+    def test_crew_list_post(self):
+        url = reverse('crew-list', kwargs={'version': self.api_version})
+        data = {
+            'person': {
+                'slug': self.person.slug,
+            },
+            'movie': {
+                'slug': self.movie.slug,
+                'title': self.movie.title,
+                'year': self.movie.year,
+            },
+            'credit': 'very bad',
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+
     def test_cast_list_get(self):
         url = reverse('cast-list', kwargs={'version': self.api_version})
         response = self.client.get(url)
@@ -56,8 +72,14 @@ class TestMovieViews(TestCase):
     def test_cast_list_post(self):
         url = reverse('cast-list', kwargs={'version': self.api_version})
         data = {
-            'person': self.actor.pk,
-            'movie': self.movie.slug,
+            'person': {
+                'slug': self.person.slug,
+            },
+            'movie': {
+                'slug': self.movie.slug,
+                'title': self.movie.title,
+                'year': self.movie.year,
+            },
             'character': 'very bad',
         }
         response = self.client.post(url, data, format='json')

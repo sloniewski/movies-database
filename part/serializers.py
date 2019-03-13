@@ -3,9 +3,10 @@ from rest_framework import serializers
 from part.models import Crew, Cast
 from movie.models import Movie
 from person.models import Person
+from main.serializers import ReadOnlySerializerMixin
 
 
-class PersonListSerializer(serializers.ModelSerializer):
+class PersonReadOnlySerializer(ReadOnlySerializerMixin, serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='person-detail',
         lookup_field='slug',
@@ -16,11 +17,12 @@ class PersonListSerializer(serializers.ModelSerializer):
         model = Person
         fields = (
             'fullname',
+            'slug',
             'url',
         )
 
 
-class MovieListSerializer(serializers.ModelSerializer):
+class MovieReadOnlySerializer(ReadOnlySerializerMixin, serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='movie-detail',
         lookup_field='slug',
@@ -32,12 +34,13 @@ class MovieListSerializer(serializers.ModelSerializer):
         fields = [
             'title',
             'year',
-            'url'
+            'url',
+            'slug',
         ]
 
 
 class CastListSerializer(serializers.ModelSerializer):
-    person = PersonListSerializer()
+    person = PersonReadOnlySerializer()
 
     class Meta:
         model = Cast
@@ -48,7 +51,7 @@ class CastListSerializer(serializers.ModelSerializer):
 
 
 class CrewListSerializer(serializers.ModelSerializer):
-    person = PersonListSerializer()
+    person = PersonReadOnlySerializer()
 
     class Meta:
         model = Crew
@@ -59,8 +62,8 @@ class CrewListSerializer(serializers.ModelSerializer):
 
 
 class CastSerializer(serializers.ModelSerializer):
-    movie = MovieListSerializer()
-    person = PersonListSerializer()
+    movie = MovieReadOnlySerializer()
+    person = PersonReadOnlySerializer()
 
     url = serializers.HyperlinkedIdentityField(
         view_name='cast-detail',
@@ -77,10 +80,17 @@ class CastSerializer(serializers.ModelSerializer):
             'url',
         )
 
+    def create(self, validated_data):
+        return self.Meta.model.objects.create(
+            movie=self.fields['movie'].get_instance(**validated_data['movie']),
+            person=self.fields['person'].get_instance(**validated_data['person']),
+            character=validated_data['character'],
+        )
+
 
 class CrewSerializer(serializers.ModelSerializer):
-    movie = MovieListSerializer()
-    person = PersonListSerializer()
+    movie = MovieReadOnlySerializer()
+    person = PersonReadOnlySerializer()
 
     url = serializers.HyperlinkedIdentityField(
         view_name='crew-detail',
@@ -95,4 +105,11 @@ class CrewSerializer(serializers.ModelSerializer):
             'person',
             'movie',
             'url',
+        )
+
+    def create(self, validated_data):
+        return self.Meta.model.objects.create(
+            movie=self.fields['movie'].get_instance(**validated_data['movie']),
+            person=self.fields['person'].get_instance(**validated_data['person']),
+            credit=validated_data['credit'],
         )

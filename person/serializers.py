@@ -36,6 +36,7 @@ class PersonListSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='person-detail',
         lookup_field='slug',
+        read_only=True,
     )
 
     class Meta:
@@ -44,6 +45,7 @@ class PersonListSerializer(serializers.ModelSerializer):
             'first_name',
             'second_name',
             'url',
+            'slug',
         )
 
 

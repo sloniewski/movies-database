@@ -32,12 +32,10 @@ class WatchListSerializer(serializers.ModelSerializer):
 
 
 class MovieReadOnlySerializer(ReadOnlySerializerMixin, MovieListSerializer):
-    instance_lookup_field = 'slug'
     slug = serializers.SlugField(required=True)
 
 
 class WatchListReadOnlySerializer(ReadOnlySerializerMixin, WatchListSerializer):
-    instance_lookup_field = 'slug'
     slug = serializers.SlugField(required=True)
 
 

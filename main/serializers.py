@@ -5,10 +5,10 @@ class ReadOnlySerializerMixin:
     instance_lookup_field = None
 
     def update(self, validated_data):
-        return self.get_instance(validated_data[self.instance_lookup_field])
+        return self.get_instance(**validated_data)
 
     def create(self, validated_data):
-        return self.get_instance(validated_data[self.instance_lookup_field])
+        return self.get_instance(**validated_data)
 
     def get_instance(self, **kwargs):
         try:

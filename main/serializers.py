@@ -2,7 +2,9 @@ from rest_framework import serializers
 
 
 class ReadOnlySerializerMixin:
-    instance_lookup_field = None
+    '''
+    All write methods return an existing instance
+    '''
 
     def update(self, validated_data):
         return self.get_instance(**validated_data)
@@ -15,6 +17,6 @@ class ReadOnlySerializerMixin:
             instance = self.Meta.model.objects.get(**kwargs)
         except self.Meta.model.DoesNotExist:
             raise serializers.ValidationError(
-                '{} with provided slug does not exist'.format(self.Meta.model.__name__)
+                '{} with provided data does not exist'.format(self.Meta.model.__name__)
             )
         return instance

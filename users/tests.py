@@ -22,6 +22,7 @@ class BaseTest(TestCase):
         self.user = User.objects.create_user(
             username=self.test_username,
             password=self.test_password,
+            is_staff=True,
         )
         self.token = Token.objects.create(user=self.user)
 
@@ -108,6 +109,22 @@ class TestWatchList(BaseTest):
                 'name': self.watchlist.name,
                 'slug': self.watchlist.slug
             },
+            'movie': {
+                'slug': self.movie_2.slug,
+                'title': self.movie_2.title,
+                'year': self.movie_2.year,
+            },
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+
+    def test_rating_post(self):
+        url = reverse('movie-ratings', kwargs={
+            'version': self.api_version,
+            'slug': self.movie.slug,
+        })
+        data = {
+            'value': 5,
             'movie': {
                 'slug': self.movie_2.slug,
                 'title': self.movie_2.title,

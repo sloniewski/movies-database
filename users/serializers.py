@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import WatchList, WatchListEntry, CustomUser
+from .models import WatchList, WatchListEntry, CustomUser, RatingScore
 from movie.serializers import MovieListSerializer
 from main.serializers import ReadOnlySerializerMixin
 
@@ -78,4 +78,31 @@ class WatchListDetailSerializer(serializers.ModelSerializer):
         )
 
 
+class RatingWriteSerializer(serializers.ModelSerializer):
+    movie = MovieReadOnlySerializer()
 
+    class Meta:
+        model = RatingScore
+        fields = (
+            'movie',
+            'value',
+        )
+
+    def create(self, validated_data):
+        # TODO what if user votes twice ? add update method
+        return self.Meta.model.objects.create(
+            movie=self.fields['movie'].get_instance(**validated_data['movie']),
+            value=validated_data['value'],
+            user=self._context['request'].user,
+        )
+
+
+class RatingReadSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username')
+
+    class Meta:
+        model = RatingScore
+        fields = (
+            'value',
+            'username'
+        )

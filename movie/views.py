@@ -1,15 +1,40 @@
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.reverse import reverse
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 
+from users.models import RatingScore
 from users.permissions import IsAdminOrReadOnly
+from users.serializers import RatingWriteSerializer, RatingReadSerializer
 from movie.models import Movie, Genre
 from movie.serializers import (
     MovieDetailSerializer,
     MovieListSerializer,
 )
-
 from main.utils import DefaultPaginator
+
+
+class RatingAPIView(ListCreateAPIView):
+    pagination_class = DefaultPaginator
+    model = RatingScore
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        slug = self.request.resolver_match.kwargs['slug']
+        return self.model.objects.filter(movie__slug=slug)
+
+    def get_serializer_class(self):
+        if self.request.method.lower() == 'get':
+            return RatingReadSerializer
+        elif self.request.method.lower() == 'post':
+            return RatingWriteSerializer
+
+    def get_serializer_context(self):
+        # work around for proper versioning
+        context = super().get_serializer_context()
+        context['request'].version = self.request.resolver_match.kwargs['version']
+        return context
 
 
 class MovieViewSet(ModelViewSet):
@@ -34,6 +59,11 @@ class MovieViewSet(ModelViewSet):
         if keyword is not None:
             queryset = queryset.search(keyword)
         return queryset
+
+    @action(detail=True, methods=['GET', 'POST'])
+    def ratings(self, request, **kwargs):
+        view = RatingAPIView.as_view()
+        return view(request._request)
 
 
 class GenreMoviesMoviesApiListView(ListCreateAPIView):

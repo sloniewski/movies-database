@@ -104,8 +104,15 @@ class TestWatchList(BaseTest):
     def test_entry_post(self):
         url = reverse('watchlist-entry-list', kwargs={'version': self.api_version})
         data = {
-            'list': self.watchlist.slug,
-            'movie': self.movie_2.slug,
+            'list': {
+                'name': self.watchlist.name,
+                'slug': self.watchlist.slug
+            },
+            'movie': {
+                'slug': self.movie_2.slug,
+                'title': self.movie_2.title,
+                'year': self.movie_2.year,
+            },
         }
-        reponse = self.client.post(url, data, format='json')
-        self.assertEqual(reponse.status_code, 201)
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)

@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .models import WatchList, WatchListEntry, CustomUser
 from movie.serializers import MovieListSerializer
+from main.serializers import ReadOnlySerializerMixin
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -30,9 +31,19 @@ class WatchListSerializer(serializers.ModelSerializer):
         )
 
 
+class MovieReadOnlySerializer(ReadOnlySerializerMixin, MovieListSerializer):
+    instance_lookup_field = 'slug'
+    slug = serializers.SlugField(required=True)
+
+
+class WatchListReadOnlySerializer(ReadOnlySerializerMixin, WatchListSerializer):
+    instance_lookup_field = 'slug'
+    slug = serializers.SlugField(required=True)
+
+
 class WatchListEntrySerializer(serializers.ModelSerializer):
-    movie = MovieListSerializer()
-    list = WatchListSerializer()
+    movie = MovieReadOnlySerializer()
+    list = WatchListReadOnlySerializer()
 
     class Meta:
         model = WatchListEntry
@@ -43,7 +54,12 @@ class WatchListEntrySerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        pass
+        watch_list = self.fields['list'].get_instance(**validated_data['list'])
+        movie = self.fields['movie'].get_instance(**validated_data['movie'])
+        return self.Meta.model.objects.create(
+            list=watch_list,
+            movie=movie,
+        )
 
 
 class WatchListDetailSerializer(serializers.ModelSerializer):

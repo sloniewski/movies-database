@@ -16,14 +16,15 @@ User = get_user_model()
 
 class TestMovieViews(TestCase):
     api_version = 'v1'
+    fixtures = [
+        'fixtures/movie.json',
+        'fixtures/person.json',
+        'fixtures/part.json',
+    ]
 
     def setUp(self):
         self.client = APIClient()
-        self.movie = Movie.objects.create(
-            title='bugs bunny',
-            description='carrots are great',
-            year=2001,
-        )
+        self.movie = Movie.objects.first()
 
         self.test_username = 'duffy'
         self.test_password = 'duck'
@@ -33,20 +34,10 @@ class TestMovieViews(TestCase):
             is_staff=True,
         )
         self.token = Token.objects.create(user=self.user)
-        self.person = Person.objects.create(
-            first_name='test_1', second_name='test_2',
-            year_of_birth=1973
-        )
-        self.actor = Cast.objects.create(
-            person=self.person, movie=self.movie,
-            character='testing'
-        )
 
     def test_get_list_movies(self):
         url = reverse('movie-list', kwargs={'version': self.api_version})
         response = self.client.get(url)
-        self.assertEqual(
-            json.loads(response.content)['results'].pop().get('title'), 'bugs bunny')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')
 
@@ -100,4 +91,4 @@ class TestMovieViews(TestCase):
         )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.content).get('title'), 'bugs bunny')
+        self.assertEqual(json.loads(response.content).get('title'), self.movie.title)

@@ -21,7 +21,9 @@ def generate_slug(instance, from_fields=None):
     model = type(instance)
     if not instance.slug:
         if from_fields is not None:
-            text = ' '.join([str(getattr(instance, field)) for field in from_fields])
+            text = ' '.join(
+                [str(getattr(instance, field)) for field in from_fields]
+            )
         else:
             text = instance.name
         slug = slugify(text)

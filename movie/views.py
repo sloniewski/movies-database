@@ -48,7 +48,8 @@ class MovieViewSet(ModelViewSet):
     api_version = 'v1'
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get' and self.request.path == reverse('movie-list', request=self.request):
+        if self.request.method.lower() == 'get' \
+                and self.request.build_absolute_uri(self.request.path) == reverse('movie-list', request=self.request):
             return MovieListSerializer
         else:
             return super(MovieViewSet, self).get_serializer_class()

@@ -1,0 +1,212 @@
+[
+   {
+    "model": "movie.movie",
+    "pk": 1,
+    "fields": {
+      "title": "batman begins",
+      "description": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.",
+      "year": 2005,
+      "slug": "batman-begins-2005"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 2,
+    "fields": {
+      "title": "the dark knight",
+      "description": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "year": 2008,
+      "slug": "the-dark-knight-2008"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 3,
+    "fields": {
+      "title": "the dark knight raises",
+      "description": "Eight years after the Joker's reign of anarchy, Batman, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City, now on the edge of total annihilation, from the brutal guerrilla terrorist Bane.",
+      "year": 2012,
+      "slug": "the-dark-knight-raises-2012"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 4,
+    "fields": {
+      "title": "constantine",
+      "description": "Supernatural detective John Constantine helps a policewoman prove her sister's death was not a suicide, but something more.",
+      "year": 2005,
+      "slug": "constantine-2005"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 5,
+    "fields": {
+      "title": "john wick",
+      "description": "An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took everything from him.",
+      "year": 2014,
+      "slug": "john-wick-2014"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 6,
+    "fields": {
+      "title": "3:10 to Yuma",
+      "description": "A small-time rancher agrees to hold a captured outlaw who's awaiting a train to go to court in Yuma. A battle of wills ensues as the outlaw tries to psych out the rancher.",
+      "year": 2007,
+      "slug": "310-to-yuma-2007"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 7,
+    "fields": {
+      "title": "hostiles",
+      "description": "In 1892, a legendary Army Captain reluctantly agrees to escort a Cheyenne chief and his family through dangerous territory.",
+      "year": 2017,
+      "slug": "hostiles-2017"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 8,
+    "fields": {
+      "title": "equilibrium",
+      "description": "In an oppressive future where all forms of feeling are illegal, a man in charge of enforcing the law rises to overthrow the system and state.",
+      "year": 2002,
+      "slug": "equilibrium-2002"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 9,
+    "fields": {
+      "title": "out of the furnace",
+      "description": "When Rodney Baze mysteriously disappears and law enforcement doesn't follow through fast enough, his older brother, Russell, takes matters into his own hands to find justice.",
+      "year": 2013,
+      "slug": "out-of-the-furnace-2013"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 10,
+    "fields": {
+      "title": "the prestige",
+      "description": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+      "year": 2006,
+      "slug": "the-prestige-2006"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 11,
+    "fields": {
+      "title": "dunkirk",
+      "description": "Allied soldiers from Belgium, the British Empire, and France are surrounded by the German Army, and evacuated during a fierce battle in World War II.",
+      "year": 2017,
+      "slug": "dunkirk-2017"
+    }
+  },
+{
+    "model": "movie.movie",
+    "pk": 12,
+    "fields": {
+      "title": "inception",
+      "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+      "year": 2010,
+      "slug": "inception-2010"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 13,
+    "fields": {
+      "title": "shutter island",
+      "description": "In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.",
+      "year": 2010,
+      "slug": "shutter-island"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 14,
+    "fields": {
+      "title": "the wolf of wall street",
+      "description": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+      "year": 2013,
+      "slug": "the-wolf-of-wall-street-2013"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 15,
+    "fields": {
+      "title": "django unchained",
+      "description": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
+      "year": 2012,
+      "slug": "django-unchained-2012"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 16,
+    "fields": {
+      "title": "the departed",
+      "description": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+      "year": 2006,
+      "slug": "the-departed-2006"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 17,
+    "fields": {
+      "title": "interstellar",
+      "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "year": 2014,
+      "slug": "interstellar-2014"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 18,
+    "fields": {
+      "title": "se7en",
+      "description": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
+      "year": 1995,
+      "slug": "se7en-1995"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 19,
+    "fields": {
+      "title": "fight club",
+      "description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+      "year": 1999,
+      "slug": "fight-club-1999"
+    }
+  },
+  {
+    "model": "movie.movie",
+    "pk": 20,
+    "fields": {
+      "title": "inglourious basterds",
+      "description": "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.",
+      "year": 2009,
+      "slug": "inglourious-basterds-2009"
+    }
+  },
+   {
+    "model": "movie.movie",
+    "pk": 21,
+    "fields": {
+      "title": "leaving las vegas",
+      "description": "Ben Sanderson, a Hollywood screenwriter who lost everything because of his alcoholism, arrives in Las Vegas to drink himself to death. There, he meets and forms an uneasy friendship and non-interference pact with prostitute Sera.",
+      "year": 1995,
+      "slug": "leaving-las-vegas-1995"
+    }
+  }
+]

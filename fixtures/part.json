@@ -1,0 +1,448 @@
+[
+  {
+    "model": "part.cast",
+    "pk": 1,
+    "fields": {
+      "movie": 1,
+      "person": 2,
+      "character": "batman"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 2,
+    "fields": {
+      "movie": 2,
+      "person": 2,
+      "character": "batman"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 3,
+    "fields": {
+      "movie": 3,
+      "person": 2,
+      "character": "batman"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 4,
+    "fields": {
+      "movie": 1,
+      "person": 2,
+      "character": "bruce wayne"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 5,
+    "fields": {
+      "movie": 2,
+      "person": 2,
+      "character": "bruce wayne"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 6,
+    "fields": {
+      "movie": 3,
+      "person": 2,
+      "character": "bruce wayne"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 7,
+    "fields": {
+      "movie": 4,
+      "person": 1,
+      "character": "john constantine"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 8,
+    "fields": {
+      "movie": 5,
+      "person": 1,
+      "character": "john wick"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 9,
+    "fields": {
+      "movie": 6,
+      "person": 2,
+      "character": "dan evans"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 10,
+    "fields": {
+      "movie": 6,
+      "person": 17,
+      "character": "ben wade"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 11,
+    "fields": {
+      "movie": 7,
+      "person": 2,
+      "character": "capt. joseph j. blocker"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 12,
+    "fields": {
+      "movie": 8,
+      "person": 2,
+      "character": "john preston"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 13,
+    "fields": {
+      "movie": 9,
+      "person": 2,
+      "character": "russell baze"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 14,
+    "fields": {
+      "movie": 1,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 15,
+    "fields": {
+      "movie": 2,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 16,
+    "fields": {
+      "movie": 3,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 17,
+    "fields": {
+      "movie": 2,
+      "person": 4,
+      "character": "joker"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 18,
+    "fields": {
+      "movie": 10,
+      "person": 2,
+      "character": "Alfred Borden"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 19,
+    "fields": {
+      "movie": 3,
+      "person": 5,
+      "character": "bane"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 20,
+    "fields": {
+      "movie": 11,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 21,
+    "fields": {
+      "movie": 11,
+      "person": 5,
+      "character": "farrier"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 22,
+    "fields": {
+      "movie": 10,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 23,
+    "fields": {
+      "movie": 12,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 24,
+    "fields": {
+      "movie": 12,
+      "person": 7,
+      "character": "cobb"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 25,
+    "fields": {
+      "movie": 12,
+      "person": 5,
+      "character": "eames"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 26,
+    "fields": {
+      "movie": 13,
+      "person": 6,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 27,
+    "fields": {
+      "movie": 13,
+      "person": 7,
+      "character": "teddy daniels"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 28,
+    "fields": {
+      "movie": 15,
+      "person": 8,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 28,
+    "fields": {
+      "movie": 15,
+      "person": 7,
+      "character": "calvin candie"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 29,
+    "fields": {
+      "movie": 14,
+      "person": 7,
+      "character": "jordan belfort"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 30,
+    "fields": {
+      "movie": 14,
+      "person": 6,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 31,
+    "fields": {
+      "movie": 14,
+      "person": 10,
+      "character": "mark hanna"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 32,
+    "fields": {
+      "movie": 16,
+      "person": 6,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 33,
+    "fields": {
+      "movie": 16,
+      "person": 7,
+      "character": "billy"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 34,
+    "fields": {
+      "movie": 17,
+      "person": 10,
+      "character": "cooper"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 35,
+    "fields": {
+      "movie": 17,
+      "person": 14,
+      "character": "brand"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 36,
+    "fields": {
+      "movie": 17,
+      "person": 3,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 37,
+    "fields": {
+      "movie": 18,
+      "person": 13,
+      "character": "somerset"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 38,
+    "fields": {
+      "movie": 18,
+      "person": 11,
+      "character": "mills"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 39,
+    "fields": {
+      "movie": 18,
+      "person": 9,
+      "department": null,
+      "credit": "director"
+    }
+  },
+     {
+    "model": "part.cast",
+    "pk": 40,
+    "fields": {
+      "movie": 19,
+      "person": 12,
+      "character": "the narrator"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 41,
+    "fields": {
+      "movie": 19,
+      "person": 11,
+      "character": "tyler durden"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 42,
+    "fields": {
+      "movie": 19,
+      "person": 9,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.crew",
+    "pk": 43,
+    "fields": {
+      "movie": 20,
+      "person": 8,
+      "department": null,
+      "credit": "director"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 44,
+    "fields": {
+      "movie": 20,
+      "person": 11,
+      "character": "lt. aldo raine"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 45,
+    "fields": {
+      "movie": 10,
+      "person": 18,
+      "character": "olivia wenscombe"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 46,
+    "fields": {
+      "movie": 21,
+      "person": 16,
+      "character": "ben sanderson"
+    }
+  },
+  {
+    "model": "part.cast",
+    "pk": 47,
+    "fields": {
+      "movie": 21,
+      "person": 15,
+      "character": "sera"
+    }
+  }
+]

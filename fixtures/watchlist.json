@@ -1,0 +1,21 @@
+[
+  {
+    "model": "users.watchlist",
+    "pk": 1,
+    "fields": {
+      "created": "2019-03-06T22:50:35.133Z",
+      "edited": "2019-03-06T22:50:35.163Z",
+      "name": "super hero movies",
+      "slug": "super-hero-movies",
+      "user": 1
+    }
+  },
+  {
+    "model": "users.watchlistentry",
+    "pk": 1,
+    "fields": {
+      "list": 2,
+      "movie": 2
+    }
+  }
+]

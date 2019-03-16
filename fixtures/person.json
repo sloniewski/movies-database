@@ -1,182 +1,182 @@
 [
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 1,
     "fields": {
       "first_name": "Keanu",
       "second_name": "Reeves",
-      "year_of_birth": "1964"
+      "year_of_birth": 1964,
+      "slug": "keanu-reeves-1964"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 2,
     "fields": {
       "first_name": "Christian",
       "second_name": "Bale",
-      "year_of_birth": "1974"
+      "year_of_birth": 1974,
+      "slug": "christian-bale-1974"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 3,
     "fields": {
       "first_name": "Christopher",
       "second_name": "Nolan",
-      "year_of_birth": "1970"
+      "year_of_birth": 1970,
+      "slug": "christopher-nolan-1970"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 4,
     "fields": {
       "first_name": "Heath",
       "second_name": "Ledger",
-      "year_of_birth": "1979"
+      "year_of_birth": 1979,
+      "slug": "heath-ledger-1979"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 5,
     "fields": {
       "first_name": "Tom",
       "second_name": "Hardy",
-      "year_of_birth": "1977"
+      "year_of_birth": 1977,
+      "slug": "tom-hardy-1977"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 6,
     "fields": {
       "first_name": "Martin",
-      "second_name": "Scorsese ",
-      "year_of_birth": "1942"
+      "second_name": "Scorsese",
+      "year_of_birth": 1942,
+      "slug": "martin-scorsese-1942"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 7,
     "fields": {
       "first_name": "Leonardo",
       "second_name": "DiCaprio ",
-      "year_of_birth": "1974"
+      "year_of_birth": 1974,
+      "slug": "leonardo-dicprio-1974"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 8,
     "fields": {
       "first_name": "Quentin",
       "second_name": "Tarantino ",
-      "year_of_birth": "1963"
+      "year_of_birth": 1963,
+      "slug": "quentin-tarnatino-1963"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 9,
     "fields": {
       "first_name": "David",
       "second_name": "Fincher",
-      "year_of_birth": "1962"
+      "year_of_birth": 1962,
+      "slug": "david-fincher-1962"
     }
   },
     {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 10,
     "fields": {
       "first_name": "Matthew",
       "second_name": "McConaughey",
-      "year_of_birth": "1962"
+      "year_of_birth": 1962,
+      "slug": "matthew-mcconaughey-1962"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 11,
     "fields": {
       "first_name": "Brad",
       "second_name": "Pitt",
-      "year_of_birth": "1963"
+      "year_of_birth": 1963,
+      "slug": "brad-pitt-1963"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 12,
     "fields": {
       "first_name": "Edward",
       "second_name": "Norton",
-      "year_of_birth": "1969"
+      "year_of_birth": 1969,
+      "slug": "edward-norton-1969"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 13,
     "fields": {
       "first_name": "Morgan",
       "second_name": "Freeman",
-      "year_of_birth": "1937"
+      "year_of_birth": 1937,
+      "slug": "morgan-freeman-1937"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 14,
     "fields": {
       "first_name": "Anne",
       "second_name": "Hathaway",
-      "year_of_birth": "1982"
+      "year_of_birth": 1982,
+      "slug": "anne-hathaway-1982"
     }
   },
   {
-    "model": "persons.person",
+    "model": "person.person",
     "pk": 15,
     "fields": {
       "first_name": "Elisabeth",
       "second_name": "Shue",
-      "year_of_birth": "1982"
-    }
-  },
-   {
-    "model": "persons.person",
-    "pk": 16,
-    "fields": {
-      "first_name": "Elisabeth",
-      "second_name": "Shue",
-      "year_of_birth": "1963"
+      "year_of_birth": 1982,
+      "slug": "elisabeth-shue-1982"
     }
   },
   {
-    "model": "persons.person",
-    "pk": 17,
+    "model": "person.person",
+    "pk": 16,
     "fields": {
       "first_name": "Nicolas",
       "second_name": "Cage",
-      "year_of_birth": "1964"
+      "year_of_birth": 1964,
+      "slug": "nicolas-cage-1964"
     }
   },
     {
-    "model": "persons.person",
-    "pk": 18,
+    "model": "person.person",
+    "pk": 17,
     "fields": {
       "first_name": "Russell",
       "second_name": "Crowe",
-      "year_of_birth": "1964"
+      "year_of_birth": 1964,
+      "slug": "rusell-crowe-1964"
     }
   },
   {
-    "model": "persons.person",
-    "pk": 19,
+    "model": "person.person",
+    "pk": 18,
     "fields": {
       "first_name": "Scarlett",
       "second_name": "Johansson",
-      "year_of_birth": "1984"
-    }
-  },
-    {
-    "model": "persons.person",
-    "pk": 20,
-    "fields": {
-      "first_name": "Jake",
-      "second_name": "Gyllenhaal",
-      "year_of_birth": "1980"
+      "year_of_birth": 1984,
+      "slug": "scarlett-johansson-1984"
     }
   }
 ]

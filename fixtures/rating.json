@@ -1,0 +1,11 @@
+[
+  {
+    "model": "users.ratingscore",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "movie": 2,
+      "value": 10
+    }
+  }
+]

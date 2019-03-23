@@ -1,13 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from rest_framework.authtoken.models import Token
+
 from main.utils import generate_slug
 from main.models import TimeStampMixin
 from movie.models import Movie
 
 
 class CustomUser(AbstractUser):
-    pass
+
+    def get_token(self):
+        return Token.objects.get(user=self)
 
 
 class RatingScore(models.Model):

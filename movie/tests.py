@@ -91,4 +91,4 @@ class TestMovieViews(TestCase):
         )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.content).get('title'), self.movie.title)
+        self.assertEqual(json.loads(response.content.decode('utf8')).get('title'), self.movie.title)

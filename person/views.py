@@ -19,8 +19,8 @@ class PersonViewSet(ModelViewSet):
     lookup_field = 'slug'
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get' \
-                and self.request.path == reverse('person-list', request=self.request):
+        if self.request.build_absolute_uri(self.request.path) == reverse('person-list', request=self.request) \
+                and self.request.method.lower() == 'get':
             return PersonListSerializer
         else:
             return super(PersonViewSet, self).get_serializer_class()

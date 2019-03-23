@@ -11,11 +11,62 @@
     }
   },
   {
+    "model": "users.watchlist",
+    "pk": 2,
+    "fields": {
+      "created": "2019-03-06T22:50:35.133Z",
+      "edited": "2019-03-06T22:50:35.163Z",
+      "name": "wild west",
+      "slug": "wild-west",
+      "user": 1
+    }
+  },
+  {
     "model": "users.watchlistentry",
     "pk": 1,
     "fields": {
-      "list": 2,
+      "list": 1,
+      "movie": 1
+    }
+  },
+  {
+    "model": "users.watchlistentry",
+    "pk": 2,
+    "fields": {
+      "list": 1,
       "movie": 2
+    }
+  },
+  {
+    "model": "users.watchlistentry",
+    "pk": 3,
+    "fields": {
+      "list": 1,
+      "movie": 3
+    }
+  },
+  {
+    "model": "users.watchlistentry",
+    "pk": 4,
+    "fields": {
+      "list": 2,
+      "movie": 6
+    }
+  },
+  {
+    "model": "users.watchlistentry",
+    "pk": 5,
+    "fields": {
+      "list": 2,
+      "movie": 7
+    }
+  },
+  {
+    "model": "users.watchlistentry",
+    "pk": 6,
+    "fields": {
+      "list": 2,
+      "movie": 15
     }
   }
 ]

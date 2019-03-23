@@ -1,0 +1,46 @@
+[
+  {
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-03-23T23:10:28.522Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+    {
+    "model": "users.customuser",
+    "pk": 2,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "guest",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-03-23T23:10:28.522Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authtoken.token",
+    "pk": "7d63667fb61ecc5e6e6e4a84f1e76931563c3be0",
+    "fields": {
+      "user": 1,
+      "created": "2019-03-23T23:34:50.566Z"
+    }
+  }
+]

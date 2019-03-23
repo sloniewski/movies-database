@@ -73,7 +73,8 @@ class WatchListViewSet(ModelViewSet):
         return WatchList.objects.filter(user=self.request.user)
 
     def get_serializer_class(self):
-        if self.request.method.lower() == 'get' and self.request.path == reverse('watchlist-list', request=self.request):
+        if self.request.build_absolute_uri(self.request.path) == reverse('watchlist-list', request=self.request) and \
+                self.request.method.lower() == 'get':
             return WatchListSerializer
         else:
             return super(WatchListViewSet, self).get_serializer_class()

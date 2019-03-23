@@ -60,17 +60,29 @@ class WatchListEntrySerializer(serializers.ModelSerializer):
         )
 
 
+class WatchListEntryListSerializer(serializers.ModelSerializer):
+    movie = MovieReadOnlySerializer()
+
+    class Meta:
+        model = WatchListEntry
+        fields = (
+            'id',
+            'movie',
+        )
+
+
 class WatchListDetailSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='watchlist-detail',
         lookup_field='slug',
     )
-    entries = WatchListEntrySerializer(many=True, read_only=True)
+    entries = WatchListEntryListSerializer(many=True, read_only=True)
 
     class Meta:
         model = WatchList
         fields = (
             'name',
+            'slug',
             'url',
             'entries',
             'created',

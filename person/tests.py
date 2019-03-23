@@ -9,7 +9,9 @@ from person.models import Person
 
 class TestViews(TestCase):
     api_version = 'v1'
-    fixtures = ['fixtures/person.json']
+    fixtures = [
+        'fixtures/person.json'
+    ]
 
     def setUp(self):
         self.client = APIClient()
@@ -32,7 +34,7 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')
         self.assertEqual(
-            json.loads(response.content).get('first_name'),
+            json.loads(response.content.decode('utf8')).get('first_name'),
             self.person.first_name
         )
 

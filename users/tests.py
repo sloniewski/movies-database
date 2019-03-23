@@ -37,7 +37,7 @@ class TestAuth(BaseTest):
         }
         response = self.client.post(url, data=data)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.content)['token'], self.token.key)
+        self.assertEqual(json.loads(response.content.decode('utf8'))['token'], self.token.key)
 
 
 class TestWatchList(BaseTest):
@@ -73,7 +73,7 @@ class TestWatchList(BaseTest):
             })
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.content)['name'], self.watchlist.name)
+        self.assertEqual(json.loads(response.content.decode('utf8'))['name'], self.watchlist.name)
 
     def test_watchlist_post(self):
         url = reverse('watchlist-list', kwargs={'version': self.api_version})

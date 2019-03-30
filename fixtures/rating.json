@@ -4,8 +4,377 @@
     "pk": 1,
     "fields": {
       "user": 1,
+      "movie": 1,
+      "value": 9
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 2,
+    "fields": {
+      "user": 1,
       "movie": 2,
+      "value": 7
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "movie": 3,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "movie": 4,
       "value": 10
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "movie": 5,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "movie": 6,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 7,
+    "fields": {
+      "user": 1,
+      "movie": 7,
+      "value": 9
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "movie": 8,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "movie": 9,
+      "value": 7
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "movie": 10,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 11,
+    "fields": {
+      "user": 1,
+      "movie": 11,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "movie": 12,
+      "value": 6
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 13,
+    "fields": {
+      "user": 1,
+      "movie": 13,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 14,
+    "fields": {
+      "user": 1,
+      "movie": 14,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 15,
+    "fields": {
+      "user": 1,
+      "movie": 15,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 16,
+    "fields": {
+      "user": 1,
+      "movie": 16,
+      "value": 2
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 17,
+    "fields": {
+      "user": 1,
+      "movie": 17,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 18,
+    "fields": {
+      "user": 1,
+      "movie": 18,
+      "value": 8
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 19,
+    "fields": {
+      "user": 1,
+      "movie": 19,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 20,
+    "fields": {
+      "user": 1,
+      "movie": 20,
+      "value": 2
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 21,
+    "fields": {
+      "user": 1,
+      "movie": 21,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 22,
+    "fields": {
+      "user": 2,
+      "movie": 1,
+      "value": 2
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 23,
+    "fields": {
+      "user": 2,
+      "movie": 2,
+      "value": 7
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 24,
+    "fields": {
+      "user": 2,
+      "movie": 3,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 25,
+    "fields": {
+      "user": 2,
+      "movie": 4,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 26,
+    "fields": {
+      "user": 2,
+      "movie": 5,
+      "value": 2
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 27,
+    "fields": {
+      "user": 2,
+      "movie": 6,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 28,
+    "fields": {
+      "user": 2,
+      "movie": 7,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 29,
+    "fields": {
+      "user": 2,
+      "movie": 8,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 30,
+    "fields": {
+      "user": 2,
+      "movie": 9,
+      "value": 3
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 31,
+    "fields": {
+      "user": 2,
+      "movie": 10,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 32,
+    "fields": {
+      "user": 2,
+      "movie": 11,
+      "value": 10
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 33,
+    "fields": {
+      "user": 2,
+      "movie": 12,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 34,
+    "fields": {
+      "user": 2,
+      "movie": 13,
+      "value": 9
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 35,
+    "fields": {
+      "user": 2,
+      "movie": 14,
+      "value": 1
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 36,
+    "fields": {
+      "user": 2,
+      "movie": 15,
+      "value": 6
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 37,
+    "fields": {
+      "user": 2,
+      "movie": 16,
+      "value": 5
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 38,
+    "fields": {
+      "user": 2,
+      "movie": 17,
+      "value": 8
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 39,
+    "fields": {
+      "user": 2,
+      "movie": 18,
+      "value": 4
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 40,
+    "fields": {
+      "user": 2,
+      "movie": 19,
+      "value": 2
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 41,
+    "fields": {
+      "user": 2,
+      "movie": 20,
+      "value": 7
+    }
+  },
+  {
+    "model": "users.ratingscore",
+    "pk": 42,
+    "fields": {
+      "user": 2,
+      "movie": 21,
+      "value": 1
     }
   }
 ]

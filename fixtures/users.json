@@ -42,5 +42,13 @@
       "user": 1,
       "created": "2019-03-23T23:34:50.566Z"
     }
+  },
+  {
+    "model": "authtoken.token",
+    "pk": "9153fff5247676d3286acbf83500bcff84efabec",
+    "fields": {
+      "user": 2,
+      "created": "2019-03-23T23:34:50.566Z"
+    }
   }
 ]

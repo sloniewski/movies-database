@@ -101,8 +101,7 @@ class RatingWriteSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        # TODO what if user votes twice ? add validation
-        return self.Meta.model.objects.create(
+        return self.Meta.model.objects.get_or_create(
             movie=self.fields['movie'].get_instance(**validated_data['movie']),
             value=validated_data['value'],
             user=self._context['request'].user,

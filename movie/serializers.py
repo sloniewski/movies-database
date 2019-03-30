@@ -20,6 +20,11 @@ class MovieDetailSerializer(serializers.ModelSerializer):
         lookup_field='slug',
     )
     rating = serializers.FloatField(read_only=True)
+    ratings = serializers.HyperlinkedIdentityField(
+        read_only=True,
+        view_name='movie-ratings',
+        lookup_field='slug',
+    )
     genre = GenreListSerializer(
         many=True,
         read_only=True,
@@ -45,6 +50,7 @@ class MovieDetailSerializer(serializers.ModelSerializer):
             'crew',
             'url',
             'rating',
+            'ratings',
             'slug',
         )
         read_only_fields = [

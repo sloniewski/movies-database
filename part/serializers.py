@@ -28,6 +28,14 @@ class MovieReadOnlySerializer(ReadOnlySerializerMixin, serializers.ModelSerializ
         lookup_field='slug',
         read_only=True,
     )
+    title = serializers.CharField(
+        required=False,
+        read_only=True
+    )
+    year = serializers.IntegerField(
+        required=False,
+        read_only=True
+    )
 
     class Meta:
         model = Movie

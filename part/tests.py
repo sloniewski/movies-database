@@ -16,6 +16,11 @@ User = get_user_model()
 
 class TestMovieViews(TestCase):
     api_version = 'v1'
+    fixtures = [
+        'fixtures/movie.json',
+        'fixtures/person.json',
+        'fixtures/part.json'
+    ]
 
     def setUp(self):
         self.client = APIClient()
@@ -48,7 +53,8 @@ class TestMovieViews(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
-    def test_crew_list_post(self):
+    def test_crew_list_post_401(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token 12345')
         url = reverse('crew-list', kwargs={'version': self.api_version})
         data = {
             'person': {
@@ -56,8 +62,21 @@ class TestMovieViews(TestCase):
             },
             'movie': {
                 'slug': self.movie.slug,
-                'title': self.movie.title,
-                'year': self.movie.year,
+            },
+            'credit': 'very bad',
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 401)
+
+    def test_crew_list_post(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+        url = reverse('crew-list', kwargs={'version': self.api_version})
+        data = {
+            'person': {
+                'slug': self.person.slug,
+            },
+            'movie': {
+                'slug': self.movie.slug,
             },
             'credit': 'very bad',
         }
@@ -69,7 +88,23 @@ class TestMovieViews(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+    def test_cast_list_post_401(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token 12345')
+        url = reverse('crew-list', kwargs={'version': self.api_version})
+        data = {
+            'person': {
+                'slug': self.person.slug,
+            },
+            'movie': {
+                'slug': self.movie.slug,
+            },
+            'credit': 'very bad',
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 401)
+
     def test_cast_list_post(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
         url = reverse('cast-list', kwargs={'version': self.api_version})
         data = {
             'person': {
@@ -77,8 +112,6 @@ class TestMovieViews(TestCase):
             },
             'movie': {
                 'slug': self.movie.slug,
-                'title': self.movie.title,
-                'year': self.movie.year,
             },
             'character': 'very bad',
         }
